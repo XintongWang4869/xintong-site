@@ -34,12 +34,8 @@ Menus:
       name: Blog
       title: Blog posts
       url: /blogs
-      weight: 2
-    - identifier: portfolio
-      name: Portfolio
-      title: Portfolio
-      url: /portfolio
       weight: 1
+
     #Dropdown menu
     # - identifier: dropdown
     #   title: Example dropdown menu
@@ -60,7 +56,7 @@ Menus:
 
 params:
   title: "Xintong Wang"
-  description: Text about my cool site
+  description: "What's past is prologue."
   # staticPath: ""  # The path to serve the static files from
   favicon: "/tiger.png"
 
@@ -127,6 +123,7 @@ params:
       disableExperience: false
       disableEducation: false
       disableProjects: false
+      disablePortfolio: false
       disableAchievements: true
       disableContact: true
 
@@ -313,6 +310,26 @@ params:
         links:
           - icon: fab fa-github
             url: https://github.com/XintongWang4869/Back-end-Development-Capstone
+
+  # portfolio
+  portfolio:
+    enable: true
+    title: "Documentation Portfolio"
+    items:
+      - title: Green Screen Composer
+        content: A simple web-based tool to replace green screen backgrounds, apply filters, and download edited images.
+        image: /images/projects/demo-green-screen.png
+        featured:
+          name: Demo
+          link: https://xintongwang4869.github.io/green-screen-composer/index
+        badges:
+          - "HTML"
+          - "CSS"
+          - "Javascript"
+        links:
+          - icon: fab fa-github
+            url: https://github.com/XintongWang4869/green-screen-composer
+
 
   #Contact
   contact:
