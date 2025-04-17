@@ -15,11 +15,14 @@
 
                 {{ if .Site.Params.about.skills.enable }}
                 {{ .Site.Params.about.skills.title }}
-                <ul>
-                    {{ range .Site.Params.about.skills.items }}
-                    <li>{{ . | markdownify }}</li>
-                    {{ end }}
-                </ul>
+                <div style="margin-top: 20px;">
+                    <ul style="all: unset; list-style: none; padding-left: 0;">
+                      {{ range .Site.Params.about.skills.items }}
+                      <li>{{ . | markdownify }}</li>
+                      {{ end }}
+                    </ul>
+                  </div>
+                  
                 {{ end }}
             </div>
         </div>
