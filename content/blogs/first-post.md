@@ -16,7 +16,6 @@ toc:
 
 ## Greetings!
 
-Hi there!
 
 I'm thrilled to finally build my own portfolio site. I'll be sharing my thoughts, experiences, and projects as I keep learning along the way.
 
