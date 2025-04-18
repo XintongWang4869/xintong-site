@@ -27,6 +27,17 @@ markup:
   goldmark:
     renderer:
       unsafe: true
+  asciidocExt:
+    workingFolderCurrent: true
+    backend: html5
+    extensions: []
+
+security:
+  exec:
+    allow:
+      - '^asciidoctor$'
+    osEnv:
+      - '(?i)^((HTTPS?|NO)_PROXY|PATH(EXT)?|APPDATA|TE?MP|TERM|GO\\w+|(XDG_CONFIG_)?HOME|USERPROFILE|SSH_AUTH_SOCK|DISPLAY|LANG|SYSTEMDRIVE)$'
 
 Menus:
   main:

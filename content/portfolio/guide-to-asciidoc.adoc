@@ -1,0 +1,736 @@
+---
+date: '2025-04-18T16:32:25+08:00'
+title: "Getting Started with AsciiDoc"
+draft: true
+github_link: ""
+author: "Xintong Wang"
+tags:
+  - AsciiDoc syntax
+  - tutorial
+image: /images/post.jpg
+description: ""
+toc:
+---
+
+====
+* *Summary:* Introduction of AsciiDoc and basics of writing AsciiDoc documents
+* *Intended Audience:* Beginners in mark-up languages, and those who are migrating from Markdown or other languages
+* *Written Context:* Self-initiated document written based on my own experience, serving as a straightforward guide to asciidoc documents.
+====
+
+
+'''
+
+
+== Introduction
+
+
+=== What is AsciiDoc
+
+AsciiDoc is a lightweight markup language^1^ used for writing structured documentation, with an `adoc` file extension. It has easy-to-read syntax, rich features, flexible customization options, making it ideal for creating technical documentation, books, manuals, and web content. With Asciidoctor, a Ruby tool, it can be converted into multiple formats such as HTML, PDF, and EPUB, 
+
+[NOTE]
+====
+. _Markup language_: A human-readable language that describes how content should be displayed or structured. Other markup languages include HTML, Markdown, LaTeX, and XML.
+
+====
+
+=== AsciiDoc vs. Markdown
+:hardbreaks-option:
+
+Markdown is one of the most popular markup languages, commonly used in blog posts and is a conventional format for README files in software projects. It is easy to learn, enabling simple and quick content formatting, and has built-in support across various platforms including GitHub, GitLab, and static site generators. 
+
+Due to its minimalistic design, it has become a favorite among general users, developers, bloggers. However, compared to Markdown, AsciiDoc may be a better fit if you want to:
+
+* *Equip your document with more features:*   
+AsciiDoc natively supports advanced elements such as merging cells in tables and automatic cross-references between sections, without using extensions or plugins as Markdown does.
+
+* *Customize the content and format more heavily* 
+AsciiDoc allows for attributes for and custom roles and styles to fine-tune the appearance of text elements, which Markdown does not support.
+
+* *Generate output in multiple formats*
+Using Asciidoctor, you can easily convert an adoc file to various formats including HTML, PDF, EPUB, DocBook, and slide decks, whereas Markdown requires additional tools or plugins.
+
+
+
+== Setting Up Your Environment
+
+Download IDE
+
+Install an AsciiDoc extension in the market place.
+
+== Writing AsciiDoc Documents
+
+
+=== Text Format
+
+[cols = ".^2h,.^3,.^6"]
+[%breakable]
+|===
+|Built-in role |lead, big, small, underline, line-through, subtitle| 
+The sign spelled out [.underline]#WELCOME# in glowing neon lights. +
+The sign spelled out [.big]#WELCOME# in glowing neon lights.
+|Define a custom role in theme | Example: +
+a custom role named "labeled"
+a|*In YAML*:
+
+ role:
+    labeled:
+      font-color: #0000FF 
+
+*In Asciidoc document*:   +  
+[.labeled] +
+A paragraph styled according to the custom role assigned to it.
+
+Another paragraph.  +
+The text [.labeled]\#label me# is formatted using the styles of the custom role.
+
+|===
+
+=== Blocks
+
+[cols=".^2h,.^3,.^3,.^3"]
+|===
+|Category |Syntax |In document |Result
+
+|literal blocks
+a|
+* [.zh]#第一行空格# 
+* set [literal] style
+* enclose the content within a pair of **....** 
+|
+.... +
+first = Xintong +
+last = Wang
+print(f"Hello, {first} {last}!") +
+....
+a|
+....
+first = Xintong 
+last = Wang
+print(f"Hello, {first} {last}!")
+....
+
+|listing blocks
+a|* set [listing] style
+* enclose the content within a pair of **----**
+|
+----  +
+The listing blocks display their rendered content \`exactly as you see it in the source`, except special characters and callouts.   +
+----
+a|
+----
+The listing blocks display their rendered content `exactly as you see it in the source`, except special characters and callouts.
+----
+
+|description list
+|.topic-name +
+description
+| .ASCIIDoc +
+AsciiDoc is a lightweight markup language for authoring documents and presentations.
+
+a|.ASCIIDoc 
+AsciiDoc is a lightweight markup language for authoring documents and presentations.
+
+| | | ABCD::abcd  a|ABCD:: abcd
+
+
+
+|===
+
+
+
+=== Breaks
+
+[cols = ".^3,.^7", width=65]
+|===
+|Description |Syntax 
+
+|[.zh]#分页# |[.zh]#3个小于号#  <<<     
+|[.zh]#主题分离# |[.zh]#3个单引号# '''     
+|Hard breaks |Use *[%hardbreaks]* to break lines without using "+".  +
+Use *[:hardbreaks-option:]* under the document title to break lines throughout the whole document.
+
+|===
+
+
+
+
+=== Links
+
+[cols = ".^2,.^5,.^5"]
+|===
+|Description |Syntax |Example
+
+|[.zh]#超链接# |Where you want to create a link:  +
+(double angle brackets) +
+**\<<name-of-link,[.zh]#描述文字#>>**
+
+Where you point to (target ID): +
+(square brackets + # )  +
+*[#name-of-link]*
+| <<design-a-table, Check here to design your tables.>> 
+
+
+|[.zh]#引用其他文档#  | *xref:*<name of file>[put description here] 
+
+If there's an anchor you want to target in that document, just add "*#xxx*" after the path, also *#page=2*  |
+
+|[.zh]#把其他文档内容纳入本文档# | *include::*<name of file>[put description here] 
+
+interdocument xref -> internal xref: +
+*\<<../../..adoc#AnchorName, Destination in that document>>*|
+
+|[.zh]#放一个链接#  | Here's the \link:non-url.md[none-url link].  +
+Here's the *<url link>[cheatsheet]* of Asciidoc. | Here's the link:非url.md[none-url link].  +
+Here's the https://powerman.name/doc/asciidoc[cheatsheet] of Asciidoc.
+
+|[.zh]#脚注#  |\footnote:[ ]  |Footnote is at the end of the page footnote:[the footnote will be displayed at the end of the page]
+
+
+|===
+
+
+=== Pictures
+
+*.Name displayed* +
+*image::<file name or path to file>[description and definition]*
+
+
+In the square bracket [&nbsp;&nbsp;&nbsp;], follow the order: <description not shown>, <width>, <height>  
+
+pdfwidth=80% +
+align="center" +
+float=right ([.zh]#图在右，文字在左#)  +
+role="related thumb right"([.zh]#有边框，图在右，文字在左#)
+
+// -> 打点不空格自动标注Figure X, 点后为显示的图片名称，*放在第一行*
+// -> 短横线-和下划线_通用, 若不填充括号则自动标记为图片名称（不显示）
+
+
+// JL文档中格式:
+// [#img-modify-existing-diagram]
+// .Modify an Existing Diagram
+// image::modify-existing-diagram.png[Modify an Existing Diagram]
+
+
+If the picture is in [.underline]#SVG format#, optionally set it to interactive (syntax: *opts=interactive*), meaning that the image color will change if the mouse hovers over it.  +
+
+
+
+=== Tables
+
+*.Name of the Table*  +
+*[definition]* +
+*|===*    +
+*Content separated by |*  +
+*Content separated by |*  +
+*Content separated by |*  +
+*|===*
+
+[#design-a-table]
+.Design the Table
+[%header, cols=".^2h,4,5",role=center]
+[frame=all]
+|===
+|Description | Syntax | Example
+
+s|format  |[format="csv"]    |
+s|width   |[%autowidth.stretch] - 100% +
+[%autowidth]  +
+[cols="^.^2,^.^5"] +     
+[width=70%] - the % symbol is optional  |
+s|frames and grids  |[frame=ends] +
+[frame="topbot"]  +
+[grid="rows"]  |
+s|header  |[options="header"]  +
+[%header] +
+The first row is the header by default (require a line break) |
+| copy 2*|N* before \|
+|to the left |"<"before \|   <|to the left
+|to the right |">"before \|   >|to the right
+|center |horizontally: &nbsp;&nbsp;"*^*"before \|  +
+vertically: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"*.^*"before \|   ^.^|centered horizontally and vertically
+
+| span columns 2+^|horizontally: &nbsp;N+   +
+vertically: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.N+ 
+|wrap the text around    | +   |  sentences   *+*^1^  +
+sentences
+|style 2+| `a` -Asciidoc {nbsp}{nbsp} \| `d` -default {nbsp}{nbsp}\| `e` -emphasis (italicized) {nbsp}{nbsp}\| `h` -header +
+`l` -literal {nbsp}{nbsp}\| `m` -monospace {nbsp}{nbsp}\| `s` -strong {nbsp}{nbsp} \| *entered last in a cell specifier*
+|output in asciidoc format  |"a"before \|  a|
+[source,python]
+----
+import os
+print "%s" %(os.uname())
+----
+|===
+
+
+[NOTE]
+====
+1. Use *[%hardbreaks]* to break lines without using "+". Use *[:hardbreaks-option:]* under the document title to break lines throughout the whole document.
+====
+
+
+To customize the table label, add `[caption="Table A. "]` above `.<title>`, and then you will get a customized table table "Table A. <title>".
+
+To apply the customized table labels to all tables, set `:table-caption: Data Set` under in the document header, and then you will get all tables labeled "Data Set".
+
+=== Counters
+
+\{counter:<name>}
+
+Example:: 
+The salad calls for \{counter:seq1}) apples, \{counter:seq1}) oranges and \{counter:seq1}) pears.
+
+Result::
+The salad calls for {counter:seq1}) apples, {counter:seq1}) oranges and {counter:seq1}) pears.
+
+To use it in a section title, define it first using an attribute reference.
+
+|====
+|:seq1: \{counter:seq1}  +
+==== Section \{seq1}
+
+The sequence in this section is \{seq1}.
+
+:seq1: \{counter:seq1}  +
+==== Section \{seq1}
+
+The sequence in this section is \{seq1}.
+a|:seq1: {counter:seq1}  
+==== Section {seq1}
+
+The sequence in this section is {seq1}.
+
+:seq1: {counter:seq1}
+==== Section {seq1}
+
+The sequence in this section is {seq1}.
+|====
+
+
+== Asciidoctor PDF
+
+adoc -> pdf:: asciidoctor-pdf <attributes> <file name> +
+
+
+
+
+
+*Attributes*: `-a`
+
+* pdf-theme  or  --theme 
+* pdf-themesdir
+* pdf-fontsdir
++
+[.zh]#字体路径后或许需添加# `,GEM_FONTS_DIR`
+
+
+Example Command: 
+
+  asciidoctor-pdf --theme path/to/theme/basic-theme.yml -a pdf-fontsdir=path/to/fonts render-me.adoc -o result.pdf
+
+  asciidoctor-pdf -a pdf-theme=themes/adoc-notes-theme.yml -a pdf-fontsdir=fonts adoc-notes.adoc -o Asciidoctor-Notes-0516.pdf
+
+
+=== Images
+
+==== To set fonts in SVG images
+
+1. Create a file named [.underline]#xxx.cfg# and populate it with `skinparam defaultFontName Noto Serif` +
+2. Pass the path to the corresponding attribute in adoc (or via the CLI or API) +
+eg. `:xxxconfig: xxx.config`
+3. Clear the cache of your diagrams and run Asciidoctor PDF with Asciidoctor Diagram enabled.
+
+[NOTE]
+====
+You are free to choose a font name registered in your PDF theme; if using the default theme, you can choose "Noto Serif", "M+ 1mn", and "M+ 1p Fallback"
+====
+
+==== To scale images
+
+
+pdfwidth - pt (default), % (of content area) ...  +
+scale - percentage of the intrinsic width of the image +
+
+[,yaml]
+----
+  image:
+    width: 80%
+    caption:
+      end: bottom/top
+      text-align: inherit
+----
+
+[NOTE]
+====
+* image-width -> takes precedence over the width attribute on an image macro
+* image-caption-end -> caption location
+* image-caption-text-align  -> can inherit the alignment of the image
+====
+
+==== To add background images
+
+In adoc, define in the document header (or in the theme):
+
+  :page-background-image: path/to/image
+  :page-background-image-recto: path/to/image
+  :page-background-image-verso: path/to/image[fit=none, pdfwidth=50%]
+  :title-page-background-image: none
+
+You can also place a logo image on the title page:
+
+  :title-logo-image: image::path/to/image[top=25%,align=center,pdfwidth=0.5in]
+
+=== Pages
+
+==== To import pages
+
+Import pages as import images (the first page is imported by default):
+
+  image::xxx.pdf[page=3]  # import the third page  
+  image::xxx.pdf[pages=2;10..16]  #import the second page, and page 10 to 16
+
+
+==== To activate the title page
+
+* Set `:doctype: book`
+* Set `:title-page:` in the document header
+
+=== To Generate TOC
+
+Apply `:toc:` in the document title. +
+Apply `:toclevels: <number>` in the document title to set levels of toc.
+
+toc category keys (in yaml):
+
+[,yaml]
+----
+  toc:
+    text-transform: uppercase
+    indent: 20
+    line-height: 1.5
+    break-after: auto
+    h3-font-color: #999999
+    h3-text-transform: none
+    title:
+      font-size: 18
+      text-align: right
+    dot-leader:
+      content: "."
+      font-style: bold
+      levels: 2 3
+      #if not specify dot-leader-levels, apply to all levels.
+----
+
+Click https://docs.asciidoctor.org/pdf-converter/latest/theme/toc/[here] to see the full list of keys.
+
+=== PDF Outline
+
+The outline is generated by default. The title and section levels can be customized.
+
+Set in the document header: +
+`:outline-title:` <preferred title>  +
+`:outlinelevels: 3`  # can set between 1 to 5  +
+`:outlinelevels: 4:2`  #section level depth: level depth
+
+Set `[outlinelevels]` on the section's parent to override the `outlinelevels` document attribute
+
+To disable the outline, apply `:!outline:`
+
+=== Page Numbers
+
+  page:
+    numbering:
+      start-at: after-toc
+
+Other page-numbering-start-at values include `body` (default), `toc`, `cover`, `title`, and `integers`. See https://docs.asciidoctor.org/pdf-converter/latest/theme/page-numbers/[here] for difference.
+
+
+[,yaml]
+----
+extends: default
+footer:
+  columns: = 100%
+  recto:
+    center:
+      content: '(C) Copyright 2020 ACME. All rights reserved.'
+    right:
+      content:'{page-number}'
+  verso:
+    left:
+      content: '{page-number} of {page-count}'
+    center:
+      content: $header-recto-center-content
+
+----
+
+To hide page numbers, do not include `{page-number}` in the footer
+
+
+If content is the same, to reduce the amount of configuring: 
+
+[,yaml]
+----
+  extends: default
+  footer:
+    columns: =100%
+    recto: &shared_footer
+      center:
+        content: '{page-number}'
+    verso: *shared_footer
+----
+
+=== Header and Footer
+:hardbreaks-option:
+
+* Attributes for your reference:
+
+page-count
+page-number 
+page-layout
+document-title
+document-subtitle
+part-title
+part-numeral 
+chapter-title
+chapter-numeral 
+section-title
+section-or-chapter-title
+
+* Multiple lines: 
+
+  content: |
+          Section Title - Page Number +
+          {section-or-chapter-title} - *{page-number}*
+
+* Add images: 
+
+ content: image:footer-logo.png[pdfwidth=15pt]
+
+=== Index
+
+An index catelog contains all index items defined in the document, in alphabetical order.
+
+Include the following line near the end of the document
+
+  [index]
+  == Index
+
+
+=== Other Customization...
+
+==== To prevent the orphaning of the anchor and title of a table, section, or discrete heading
+
+Under the table heading, apply the breakable option: `[#optional-id%breakable]`
+
+
+Above the section title: `[%breakable]`
+
+If for all sections, set in the theme: 
+
+  heading:
+    min-height-after: auto
+
+
+If you use [%unbreakable], then the whole content will be advanced to the next page if it will break otherwise.
+
+==== To prevent wrapping the longest line
+
+  [source%autofit,java]
+  ----
+  Here are codes. +
+  The long line will not wrap, with decreased font size. 
+  ----
+
+To apply to the whole document: 
+
+  = Document Title
+  :autofit-option:
+
+
+==== To hide section titles or numbers
+
+Above the title, apply `[%notitle]` to hide the title: the title still shows up in the TOC.
+
+Above the title, apply `:sectnums!:` to unset the number of this section.
+
+
+
+==== To activate a syntax highlighter
+
+`gem install rouge`
+
+----
+= Document Title
+:source-highlighter: rouge
+----
+
+
+==== To customize figure/table captions
+:hardbreaks-option:
+
+Scenario: You want to use Figure X-X before the figure title for numbering.
+
+----
+== My Section
+:doc-part:2
+
+.My Image
+image::{imagesdir}/my-image.png[caption="Figure {doc-part}-{counter:figure} "]
+----
+
+To reference figures/tables, you can add the attribute `xrefstyle` (full/basic/short). 
+For example, for lists of figures/tables, you can use "full", but for main text, you can use "short".
+
+You can also customize reference text using `reftext=`
+
+
+=== Theme
+
+|====
+|Example |Notes
+
+a|
+  extends: default
+  base:
+    font-color: #FF0000
+
+ extends:
+ - default
+ - ./brand-theme.yml
+
+a|`extends` (a theme can extend another theme)
+
+* You can extend the theme file giving the absolute/relative paths.
+* If the theme extends the https://github.com/asciidoctor/asciidoctor-pdf/tree/main/data/themes/base-theme.yml[base theme], you only have to declare keys that you want to override (others get inherited from the base theme)
+* If you don't want to extend any theme (not even the base theme), omit the `extends` key or assign the value "~" to the extends key.
+a|
+  font:
+    catalog:
+      Noto Sans:
+        normal: GEM_FONTS_DIR/notosans-regular-subset.ttf
+        bold: GEM_FONTS_DIR/notosans-bold-subset.ttf
+        italic: GEM_FONTS_DIR/notosans-italic-subset.ttf
+        bold_italic: GEM_FONTS_DIR/notosans-bold_italic-subset.ttf
+
+  font:
+    fallbacks:
+    - M+ 1p Fallback
+    - Noto Emoji
+
+a|`font`
+
+* custom fonts (catalog key): font paths
+* fallback fonts (fallbacks key): font names declared in the catalog (or that are inherited)
+
+
+a|
+  extends: default
+  footer:
+    recto:
+      right:
+        content: A recto page
+    verso:
+      left:
+        content: A verso page
+|
+a| 
+  extends: base
+  page:
+    layout: portrait
+    margin: [0.75in, 1in, 0.75in, 1in]
+    size: Letter
+  base:
+    font-color: #333333
+    font-family: Times-Roman
+    font-size: 12
+    line-height-length: 17
+    line-height: $base-line-height-length / $base-font-size
+  role:
+    removed:
+      font-style: italic
+      text-decoration: line-through
+      text-decoration-color: #FF0000
+  heading:
+    font-color: #262626
+    font-size: 17
+    font-style: bold
+    line-height: 1.2
+    margin-bottom: 10
+  link:
+    font-color: #002FA7
+  list:
+    indent: $base-font-size * 1.5
+
+|If the theme extends the https://github.com/asciidoctor/asciidoctor-pdf/tree/main/data/themes/base-theme.yml[base theme], you only have to declare keys that you want to override (others get inherited from the base theme)
+
+|====
+
+
+=== Other
+
+==== Install Asciidoctor PDF (`asciidoctor-pdf`)
+
+. Install ruby. Run `ruby -v` to check if ruby has been installed
+. Run `gem install asciidoctor-pdf`
+
+For more details, refer to https://docs.asciidoctor.org/pdf-converter/latest/
+
+====
+Asciidoctor PDF (gem: asciidoctor-pdf, command: asciidoctor-pdf) is published as a RubyGem to the rubygems.org software registry. You install Asciidoctor PDF from that registry using the RubyGem management tools provided by Ruby (bundle or gem). 
+====
+
+==== Install Fonts in WSL2
+
+1. Update the package index on your Linux distribution by running the following command:   
+`sudo apt update`
+
+2. Install the fontconfig package by running the following command:   
+`sudo apt install fontconfig`
+
+3. Download the font files in either TTF or OTF format.
+
+4. Copy the downloaded font files to the /usr/share/fonts/truetype directory in your Linux distribution. You can do this by running the following command:   
+`sudo cp /path/to/downloaded/fonts/*.ttf /usr/share/fonts/truetype`
+
+5. Update the font cache by running the following command:   
+`sudo fc-cache -fv`
+
+Run `fc-list` to check the list of installed fonts.
+
+
+
+=== Hi there - Some Quick References
+
+
+[width= "70%", cols=".^2,.^3,.^3"]
+[%hardbreaks]
+[%header]
+|===
+|Description  |Syntax   |Example
+|[.zh]#温度符号# | alt 0176         | °   
+|ohm          |                |Ω
+|[.zh]#加减号#  |alt 0177; alt 41408 |±     
+|[.zh]#平方#    |alt 0178           |²      
+|miu            |alt 0181          |µ       
+|[.zh]#空格#   | \&#8195;           |&#8195;     
+|en dash       | \&#150; alt 150         | –
+|em dash        |\&#151; alt 151     | —
+|[.zh]#上角标#  | Jitter\^1^      |Jitter^1^  
+|[.zh]#下角标#  | T\~Storage~          | T~Storage~  
+|[.zh]#颜色# RGB    2+|
+White: FFFFFF +
+Black: 000000 \| 333333 +
+Gray: 808080 \| EEEEEE \|F9F9F9 +
+Red: FF0000 +
+Green: 00FF00 +
+Blue: 0000FF + 
+Yellow: FFFF00 +
+Purple: 800080 +
+Cyan: 00FFFF +
+Orange: FF6600 
+
+|===
