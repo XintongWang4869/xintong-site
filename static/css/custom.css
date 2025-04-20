@@ -1,0 +1,189 @@
+/* ========== General AsciiDoc Styling ========== */
+.big {
+  font-size: 2em;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.line-through {
+  text-decoration: line-through;
+}
+
+.my-custom-role {
+  color: #0000FF
+}
+
+
+/* Section Titles */
+.sect1 > h2, .sect2 > h3, .sect3 > h4, .sect4 > h5 {
+  font-weight: 700;
+  margin-top: 2em;
+  margin-bottom: 1em;
+  padding-bottom: 0.2em;
+  border-bottom: 2px solid #e0e0e0;
+  color: #2c3e50;
+}
+
+/* Paragraphs */
+.paragraph p {
+  margin: 0.6em 0;
+  line-height: 1.75;
+  font-size: 1rem;
+  color: #333;
+}
+
+/* Lists (ulist and olist) */
+ul, ol {
+  padding-left: 1.5em;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  font-size: 1rem;
+}
+
+li {
+  margin: 0.2em 0;
+  list-style-position: outside;
+  font-size: 1rem;
+}
+
+
+/* Tables */
+table {
+  font-size: 0.9rem; /* Smaller font size */
+}
+
+
+/* General code block and inline code wrapping */
+pre, code {
+  white-space: pre-wrap !important;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+/* Specifically target table cells too */
+.tableblock td pre, .tableblock th pre,
+.tableblock td code, .tableblock th code {
+  white-space: pre-wrap !important;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  display: inline-block;
+}
+
+
+
+
+/* Admonitions (Notes, Tips, Warnings) */
+.admonitionblock {
+  background: #f9f9f9;
+  border-left: 5px solid #2196F3;
+  padding: 0.75em 1em;
+  margin: 1em 0;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.admonitionblock .title {
+  font-weight: bold;
+  margin-bottom: 0.3em;
+}
+
+/* Colors by type */
+.admonitionblock.note {
+  border-color: #2196F3;
+  background: #eef6fd;
+}
+.admonitionblock.tip {
+  border-color: #4CAF50;
+  background: #e8f5e9;
+}
+.admonitionblock.warning {
+  border-color: #FF9800;
+  background: #fff3e0;
+}
+.admonitionblock.caution {
+  border-color: #f44336;
+  background: #ffebee;
+}
+.admonitionblock.important {
+  border-color: #9c27b0;
+  background: #f3e5f5;
+}
+
+/* Code Blocks */
+.listingblock pre, .literalblock pre {
+  background: #272822;
+  color: #f8f8f2;
+  padding: 1em;
+  border-radius: 5px;
+  overflow-x: auto;
+  font-size: 0.85rem; /* smaller font */
+  line-height: 1.4;
+}
+
+/* Inline Code */
+.literal span, .monospaced span, code {
+  background-color: #eee;
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+  font-family: monospace;
+  font-size: 0.9em;
+}
+
+/* Blockquotes */
+.quoteblock {
+  border-left: 4px solid #ccc;
+  margin: 1.5em 0;
+  padding-left: 1em;
+  color: #555;
+  font-style: italic;
+}
+
+/* Images */
+.imageblock img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 1em auto;
+}
+
+/* Horizontal Rule */
+hr {
+  border: 0;
+  height: 1px;
+  background: #ccc;
+  margin: 2em 0;
+}
+
+
+/* sidebar */
+
+.sidebarblock {
+  border: 2px solid #e6e6e6;
+  background-color: #f9f9f9;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.08);
+  padding: 1.2em;
+  margin: 2em 0;
+  border-radius: 8px;
+  position: relative;
+}
+
+/* New: Match the title correctly inside sidebar */
+.sidebarblock .content > .title {
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 1em;
+}
+
+.sidebarblock .content {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #333;
+}
+
+.sidebarblock .content p {
+  margin: 0.5em 0;
+}

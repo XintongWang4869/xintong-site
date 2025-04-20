@@ -1,7 +1,7 @@
 ---
 date: '2025-04-18T16:32:25+08:00'
 title: "Getting Started with AsciiDoc"
-draft: true
+draft: false
 github_link: ""
 author: "Xintong Wang"
 tags:
@@ -11,15 +11,20 @@ image: /images/post.jpg
 description: ""
 toc:
 ---
+:toc: auto
+:toclevels: 4
 
-====
+
+[sidebar]
+.About This Document
+--
 * *Summary:* Introduction of AsciiDoc and basics of writing AsciiDoc documents
 * *Intended Audience:* Beginners in mark-up languages, and those who are migrating from Markdown or other languages
 * *Written Context:* Self-initiated document written based on my own experience, serving as a straightforward guide to asciidoc documents.
-====
+--
 
 
-'''
+// '''
 
 
 == Introduction
@@ -27,12 +32,11 @@ toc:
 
 === What is AsciiDoc
 
-AsciiDoc is a lightweight markup language^1^ used for writing structured documentation, with an `adoc` file extension. It has easy-to-read syntax, rich features, flexible customization options, making it ideal for creating technical documentation, books, manuals, and web content. With Asciidoctor, a Ruby tool, it can be converted into multiple formats such as HTML, PDF, and EPUB, 
+AsciiDoc is a lightweight markup language^1^ used for writing structured documentation, with an `adoc` file extension. It has easy-to-read syntax, rich features, and flexible customization options, making it ideal for creating technical documentation, books, and web content. With https://docs.asciidoctor.org/asciidoctor/latest/[Asciidoctor], a Ruby tool, it can be converted into multiple formats such as HTML, PDF, and EPUB.
 
 [NOTE]
 ====
 . _Markup language_: A human-readable language that describes how content should be displayed or structured. Other markup languages include HTML, Markdown, LaTeX, and XML.
-
 ====
 
 === AsciiDoc vs. Markdown
@@ -40,275 +44,450 @@ AsciiDoc is a lightweight markup language^1^ used for writing structured documen
 
 Markdown is one of the most popular markup languages, commonly used in blog posts and is a conventional format for README files in software projects. It is easy to learn, enabling simple and quick content formatting, and has built-in support across various platforms including GitHub, GitLab, and static site generators. 
 
-Due to its minimalistic design, it has become a favorite among general users, developers, bloggers. However, compared to Markdown, AsciiDoc may be a better fit if you want to:
+Due to its minimalistic design, it has become a favorite among general users, developers, and bloggers. However, compared to Markdown, AsciiDoc may be a better fit if you want to:
 
-* *Equip your document with more features:*   
+* *Equip your document with more features.*   
 AsciiDoc natively supports advanced elements such as merging cells in tables and automatic cross-references between sections, without using extensions or plugins as Markdown does.
 
-* *Customize the content and format more heavily* 
-AsciiDoc allows for attributes for and custom roles and styles to fine-tune the appearance of text elements, which Markdown does not support.
+* *Customize the content and format more heavily.* 
+AsciiDoc allows you to fine-tune the presentation by defining custom roles to apply specific CSS classes, or using attributes to dynamically insert reusable values across your document, which Markdown does not support.
 
-* *Generate output in multiple formats*
-Using Asciidoctor, you can easily convert an adoc file to various formats including HTML, PDF, EPUB, DocBook, and slide decks, whereas Markdown requires additional tools or plugins.
+* *Generate output in multiple formats.*
+Using Asciidoctor, you can easily convert an AsciiDoc file to various formats including HTML, PDF, EPUB, DocBook, and slide decks, whereas Markdown requires additional tools or plugins.
 
 
 
 == Setting Up Your Environment
+:hardbreaks-option:
 
-Download IDE
+Before you start writing AsciiDoc content, it's important to set up an editor that supports AsciiDoc syntax and features.
 
-Install an AsciiDoc extension in the market place.
+. Install a text editor or integrated development environment (IDE) of your choice.
+
+. Install the appropriate AsciiDoc plugin or extension to enable syntax highlighting, live preview, and other useful features.
+
+See below for popular editors and their available AsciiDoc support:
+
+[options="header"]
+[%autowidth]
+|===
+|Text Editor  |AsciiDoc Support
+|Visual Studio Code (recommended) |Install the `asciidoctor.asciidoctor-vscode` extension.
+|Atom |Install the `language-asciidoc` and `asciidoc-preview` packages.
+|IntelliJ IDEA  |Install the AsciiDoc Plugin from the JetBrains marketplace.
+|===
+
+Later, when your document is ready for export, you can install a converter like Asciidoctor, which will be introduced in the Section xxx.
+
 
 == Writing AsciiDoc Documents
+:hardbreaks-option:
+
+With your editor set up, you can begin your AsciiDoc project. To generate polished outputs like PDF or HTML, you'll need supporting files such as YAML configuration and custom font settings, and it's important to organize your project properly. 
+
+=== Document Structure Overview
+
+Here is an example directory structure:
+----
+my-project/
+├── content/
+│   ├── index.adoc
+│   └── chapters/
+│       ├── introduction.adoc
+│       └── setup.adoc
+├── themes/
+│   └── custom-theme.yml
+├── fonts/
+│   ├── roboto-regular.ttf
+│   ├── roboto-bold.ttf
+│   └── roboto-italic.ttf
+└── images/
+----
+
+* *AsciiDoc Files* (`.adoc`) 
+AsciiDoc files form the main body of your project. You can split a large project into multiple .adoc files and include them using the `include::` directive to keep things modular and manageable. For example, in `my-project/content/index.adoc`:
++
+----
+= My Project Title
+Author Name
+:doctype: book
+:toc:
+:sectnums:
+
+\include::chapters/introduction.adoc[]
+\include::chapters/setup.adoc[]
+----
+
+* *YAML Configuration Files (`.yml`)*
+YAML files are often used alongside AsciiDoc when you use conversion tools like Asciidoctor PDF. The YAML theme file allows you to define project-level settings, such as page size, and font settings. You can use a theme that extends from the default AsciiDoc theme:
++
+----
+extend: default
+
+page:
+  size: A4
+  layout: portrait
+
+font:
+  catalog:
+    NotoSans:
+      normal: fonts/NotoSans-Regular.ttf
+      bold: fonts/NotoSans-Bold.ttf
+      italic: fonts/NotoSans-Italic.ttf
+      bold_italic: fonts/NotoSans-BoldItalic.ttf
+  base:
+    font_family: NotoSans
+    font_size: 10
+
+base:
+  background_color: #ffffff
+  text_color: #333333
+
+table:
+  border: 1px solid #ddd
+  padding: 0.5em
+  background: #fafafa
+----
+
+* *Customized Fonts*
+By default, AsciiDoc uses system fonts, but you can specify your own font families for different parts of the document such as body text and code blocks. If your document includes non-English characters, you may need to reference a custom font to support these characters.
 
 
-=== Text Format
+=== Basic Syntax
 
-[cols = ".^2h,.^3,.^6"]
+Create and name your file with the `.adoc` extension. Use the following guide to learn the basics of AsciiDoc syntax and common elements.
+
+==== Document Header
+
+
+==== Sections and Breaks
+
+[cols = "<4a,<6a,<6a", frame="all"]
+[options="header"]
 [%breakable]
 |===
-|Built-in role |lead, big, small, underline, line-through, subtitle| 
-The sign spelled out [.underline]#WELCOME# in glowing neon lights. +
-The sign spelled out [.big]#WELCOME# in glowing neon lights.
-|Define a custom role in theme | Example: +
-a custom role named "labeled"
-a|*In YAML*:
+|Aspects  |Syntax |Result
+|Section levels |
+----
+== Level 1 Section Title
 
- role:
-    labeled:
-      font-color: #0000FF 
-
-*In Asciidoc document*:   +  
-[.labeled] +
-A paragraph styled according to the custom role assigned to it.
-
-Another paragraph.  +
-The text [.labeled]\#label me# is formatted using the styles of the custom role.
-
-|===
-
-=== Blocks
-
-[cols=".^2h,.^3,.^3,.^3"]
-|===
-|Category |Syntax |In document |Result
-
-|literal blocks
-a|
-* [.zh]#第一行空格# 
-* set [literal] style
-* enclose the content within a pair of **....** 
+=== Level 2 Section Title
+----
 |
-.... +
-first = Xintong +
-last = Wang
-print(f"Hello, {first} {last}!") +
+== Level 1 Section Title
+
+=== Level 2 Section Title
+
+
+|Page breaks |`<<<`   |
+|Thematic breaks|3 repeating characters of `'`, `-`, or `*`|
+|Line breaks |
+----
+This is the first line. +
+This is the second line.
+----
+You can also add `:hardbreaks-option:` under the section title to activate line breaks across the whole section without using "+".
+
+|This is the first line. +
+This is the second line.
+|===
+
+You can also customize section ID generation, numbers and styles. See https://docs.asciidoctor.org/asciidoc/latest/sections/special-section-titles/[here] for more details.
+
+
+
+
+==== Text Format
+
+[cols = "<4a,<6a,<6a", frame="all"]
+[options="header"]
+[%breakable]
+|===
+|Aspects  |Syntax |Result
+|Enclose the text with symbols.
+|
+----
+*Bold text*
+_Italic text_
+`Monospace`
+Subscript example: H~2~O
+Superscript example: x^2^
+----
+|
+*Bold text*
+_Italic text_
+`Monospace`
+Subscript example: H~2~O
+Superscript example: x^2^
+|**Built-in roles**, such as lead, big, small, underline, line-through, and subtitle.
+Wrap the text with `#`.
+|
+----
+[.big]#Big text#
+[.underline]#Underline text#
+[.line-through]#Line-through text#
+----
+| 
+[.big]#Big text#
+[.underline]#Underline text#
+[.line-through]#Line-through text#
+
+|*Custom roles*
+|Label the text in adoc:
+----
+[.my-custom-role]
+A paragraph with customized style.
+
+This is [.my-custom-role]#custom text#.
+----
+
+Define the role in YAML:
+----
+role:
+  my-custom-role:
+    font-color: #0000FF 
+----
+|
+[.my-custom-role]#A paragraph with customized style.#
+
+This is [.my-custom-role]#custom text#.
+
+|===
+
+
+==== Lists
+
+[cols = "<4a,<6a,<6a", frame="all"]
+[options="header"]
+[%breakable]
+|===
+|Aspects  |Syntax |Result
+|Ordered lists `.` |
+----
+. First item
+. Second item
+----
+|. First item
+. Second item
+
+|Unordered lists `*` or `-` |
+----
+* Item
+* Another item
+** Nested item 
+----
+|* Item
+* Another item
+** Nested item 
+
+|Checklists `[ ]` |
+----
+* [*] Checked
+* [x] Also checked
+* [ ] Not checked
+----
+|* [*] Checked
+* [x] Also checked
+* [ ] Not checked
+
+|Description lists `::` |
+----
+Cloud Providers::
+  PaaS:::
+    . OpenShift
+    . CloudBees
+  IaaS:::
+    . Amazon EC2
+    . Rackspace
+----
+|
+Cloud Providers::
+  PaaS:::
+    . OpenShift
+    . CloudBees
+  IaaS:::
+    . Amazon EC2
+    . Rackspace
+
+|===
+
+
+
+==== Links
+
+[cols = "<4a,<6a,<6a", frame="all"]
+[options="header"]
+[%breakable]
+|==========
+|Aspects  |Syntax |Result
+|URL and Link macros
+|
+----
+Ask questions in the https://chat.asciidoc.org[*AsciiDoc community chat*, window=_blank].
+----
+|Ask questions in the https://chat.asciidoc.org[*AsciiDoc community chat*, window=_blank].
+
+|Cross references 
+|. Assign an ID to the target section: add `[#set-link-id]` above the target section. 
+. At where you want to reference:
+----
+See <<set-link-id, Custom Text to Display>> for more details.
+
+Using a section's title such as <<Links>> without assigning ID.
+----
+|See <<set-link-id, Custom Text to Display>> for more details.
+
+Using a section's title such as <<Links>> without assigning ID.
+
+|Inter-document xref  | 
+----
+Why a tiger icon? See my xref:[path-to-file]#section-id[Text to Display]!
+----
+|Why a tiger icon? See my xref:/blogs/first-post#[first post]!
+
+|==========
+
+
+==== Tables
+[cols = "<6a,<6a", frame="all"]
+[options="header"]
+[%breakable]
+|==========
+|An Example Table |Result
+|....
+.Table Title
+[cols="3,5", options="header"]
+[frame="all"]
+\|===
+\|Header 1 \|Header 2
+<\|Align to the left  <\|Align to the left
+>\|Align to the right >\|Align to the right
+^\|Center the content ^\|Center the content
+
+.3+.^\|Merge vertically,
+center vertically 
+\|Row 4 column 2
+\|Row 5 column 2
+\|Row 6 column 2
+
+2+^\|Merge horizontally, center horizontally
+
+a\|Using operator `a` for AsciiDoc style:
+* List item
+* List item
+* List item
+
+\|Without operator `a`:
+* List item
+* List item
+* List item
+
+h\|Using operator `h` for header style
+m\|Using operator `m` for monospace style
+\|===
 ....
-a|
+|image:/images/portfolio/adoc-table-example.png[]
+|==========
+ 
+You can also customize table width, format (such as using a CSV format), table caption, and more. Refer to https://docs.asciidoctor.org/asciidoc/latest/tables/build-a-basic-table/[AsciiDoc Docs] for more details.
+
+
+
+==== Images
+
+[cols = "<6a,<6a", frame="all"]
+[options="header"]
+[%breakable]
+|==========
+|Syntax |Result
+|Basic syntax:
+----
+.Image Caption Displayed
+image::<path-to-file>[optional description, width, height, other definitions]
+----
+Example:
+----
+.Tiger Icon
+image::/tiger.png[tiger, 50, 50, align="center"]
+----
+
+|.Tiger Icon
+image::/tiger.png[tiger, 50, 50, align="center"]
+
+|==========
+
+
+
+==== Other Useful Elements
+
+[cols = "<4a,<6a,<6a", frame="all"]
+[options="header"]
+[%breakable]
+|==========
+|Aspects  |Syntax |Result
+|Admonitions including:
+
+- NOTE
+- TIP
+- IMPORTANT
+- CAUTION
+- WARNING  
+
+|----
+WARNING: this is a warning.
+
+[NOTE] 
+==== 
+This is a note section:
+
+. List item 1
+. List item 2
+====
+----
+
+|WARNING: this is a warning.
+
+[NOTE] 
+==== 
+This is a note section:
+
+. List item 1
+. List item 2
+====
+
+
+|Footnote (`footnote:[]`)  |
+----
+This is my footnote footnote:[Example footnote at the end of the page].
+----
+|This is my footnote footnote:[Example footnote at the end of the page].
+
+|Source code blocks
+|
 ....
-first = Xintong 
-last = Wang
+[source, python]
+----
+first = first-name
+last = last-name
 print(f"Hello, {first} {last}!")
+----
 ....
+|[source, python]
+----
+first = first-name
+last = last-name
+print(f"Hello, {first} {last}!")
+----
 
-|listing blocks
-a|* set [listing] style
-* enclose the content within a pair of **----**
+
+|Include content from another file into the current AsciiDoc document. | 
+----
+\include::<path-to-file>[Optional text to display] 
+----
 |
-----  +
-The listing blocks display their rendered content \`exactly as you see it in the source`, except special characters and callouts.   +
-----
-a|
-----
-The listing blocks display their rendered content `exactly as you see it in the source`, except special characters and callouts.
-----
-
-|description list
-|.topic-name +
-description
-| .ASCIIDoc +
-AsciiDoc is a lightweight markup language for authoring documents and presentations.
-
-a|.ASCIIDoc 
-AsciiDoc is a lightweight markup language for authoring documents and presentations.
-
-| | | ABCD::abcd  a|ABCD:: abcd
+|==========
 
 
-
-|===
-
-
-
-=== Breaks
-
-[cols = ".^3,.^7", width=65]
-|===
-|Description |Syntax 
-
-|[.zh]#分页# |[.zh]#3个小于号#  <<<     
-|[.zh]#主题分离# |[.zh]#3个单引号# '''     
-|Hard breaks |Use *[%hardbreaks]* to break lines without using "+".  +
-Use *[:hardbreaks-option:]* under the document title to break lines throughout the whole document.
-
-|===
-
-
-
-
-=== Links
-
-[cols = ".^2,.^5,.^5"]
-|===
-|Description |Syntax |Example
-
-|[.zh]#超链接# |Where you want to create a link:  +
-(double angle brackets) +
-**\<<name-of-link,[.zh]#描述文字#>>**
-
-Where you point to (target ID): +
-(square brackets + # )  +
-*[#name-of-link]*
-| <<design-a-table, Check here to design your tables.>> 
-
-
-|[.zh]#引用其他文档#  | *xref:*<name of file>[put description here] 
-
-If there's an anchor you want to target in that document, just add "*#xxx*" after the path, also *#page=2*  |
-
-|[.zh]#把其他文档内容纳入本文档# | *include::*<name of file>[put description here] 
-
-interdocument xref -> internal xref: +
-*\<<../../..adoc#AnchorName, Destination in that document>>*|
-
-|[.zh]#放一个链接#  | Here's the \link:non-url.md[none-url link].  +
-Here's the *<url link>[cheatsheet]* of Asciidoc. | Here's the link:非url.md[none-url link].  +
-Here's the https://powerman.name/doc/asciidoc[cheatsheet] of Asciidoc.
-
-|[.zh]#脚注#  |\footnote:[ ]  |Footnote is at the end of the page footnote:[the footnote will be displayed at the end of the page]
-
-
-|===
-
-
-=== Pictures
-
-*.Name displayed* +
-*image::<file name or path to file>[description and definition]*
-
-
-In the square bracket [&nbsp;&nbsp;&nbsp;], follow the order: <description not shown>, <width>, <height>  
-
-pdfwidth=80% +
-align="center" +
-float=right ([.zh]#图在右，文字在左#)  +
-role="related thumb right"([.zh]#有边框，图在右，文字在左#)
-
-// -> 打点不空格自动标注Figure X, 点后为显示的图片名称，*放在第一行*
-// -> 短横线-和下划线_通用, 若不填充括号则自动标记为图片名称（不显示）
-
-
-// JL文档中格式:
-// [#img-modify-existing-diagram]
-// .Modify an Existing Diagram
-// image::modify-existing-diagram.png[Modify an Existing Diagram]
-
-
-If the picture is in [.underline]#SVG format#, optionally set it to interactive (syntax: *opts=interactive*), meaning that the image color will change if the mouse hovers over it.  +
-
-
-
-=== Tables
-
-*.Name of the Table*  +
-*[definition]* +
-*|===*    +
-*Content separated by |*  +
-*Content separated by |*  +
-*Content separated by |*  +
-*|===*
-
-[#design-a-table]
-.Design the Table
-[%header, cols=".^2h,4,5",role=center]
-[frame=all]
-|===
-|Description | Syntax | Example
-
-s|format  |[format="csv"]    |
-s|width   |[%autowidth.stretch] - 100% +
-[%autowidth]  +
-[cols="^.^2,^.^5"] +     
-[width=70%] - the % symbol is optional  |
-s|frames and grids  |[frame=ends] +
-[frame="topbot"]  +
-[grid="rows"]  |
-s|header  |[options="header"]  +
-[%header] +
-The first row is the header by default (require a line break) |
-| copy 2*|N* before \|
-|to the left |"<"before \|   <|to the left
-|to the right |">"before \|   >|to the right
-|center |horizontally: &nbsp;&nbsp;"*^*"before \|  +
-vertically: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"*.^*"before \|   ^.^|centered horizontally and vertically
-
-| span columns 2+^|horizontally: &nbsp;N+   +
-vertically: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.N+ 
-|wrap the text around    | +   |  sentences   *+*^1^  +
-sentences
-|style 2+| `a` -Asciidoc {nbsp}{nbsp} \| `d` -default {nbsp}{nbsp}\| `e` -emphasis (italicized) {nbsp}{nbsp}\| `h` -header +
-`l` -literal {nbsp}{nbsp}\| `m` -monospace {nbsp}{nbsp}\| `s` -strong {nbsp}{nbsp} \| *entered last in a cell specifier*
-|output in asciidoc format  |"a"before \|  a|
-[source,python]
-----
-import os
-print "%s" %(os.uname())
-----
-|===
-
-
-[NOTE]
-====
-1. Use *[%hardbreaks]* to break lines without using "+". Use *[:hardbreaks-option:]* under the document title to break lines throughout the whole document.
-====
-
-
-To customize the table label, add `[caption="Table A. "]` above `.<title>`, and then you will get a customized table table "Table A. <title>".
-
-To apply the customized table labels to all tables, set `:table-caption: Data Set` under in the document header, and then you will get all tables labeled "Data Set".
-
-=== Counters
-
-\{counter:<name>}
-
-Example:: 
-The salad calls for \{counter:seq1}) apples, \{counter:seq1}) oranges and \{counter:seq1}) pears.
-
-Result::
-The salad calls for {counter:seq1}) apples, {counter:seq1}) oranges and {counter:seq1}) pears.
-
-To use it in a section title, define it first using an attribute reference.
-
-|====
-|:seq1: \{counter:seq1}  +
-==== Section \{seq1}
-
-The sequence in this section is \{seq1}.
-
-:seq1: \{counter:seq1}  +
-==== Section \{seq1}
-
-The sequence in this section is \{seq1}.
-a|:seq1: {counter:seq1}  
-==== Section {seq1}
-
-The sequence in this section is {seq1}.
-
-:seq1: {counter:seq1}
-==== Section {seq1}
-
-The sequence in this section is {seq1}.
-|====
 
 
 == Asciidoctor PDF
