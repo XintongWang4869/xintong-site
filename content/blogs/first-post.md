@@ -7,7 +7,7 @@ github_link: "https://github.com/gurusabarish/hugo-profile"
 author: "Xintong Wang"
 tags:
   - miscellaneous
-image: /images/post.jpg
+image: /images/posts/hello.jpg
 description: "Greetings"
 toc:
 ---
