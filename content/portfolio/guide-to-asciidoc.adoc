@@ -5,9 +5,12 @@ draft: false
 github_link: ""
 author: "Xintong Wang"
 tags:
-  - AsciiDoc syntax
-  - tutorial
-image: /images/post.jpg
+  - AsciiDoc
+  - Asciidoctor PDF
+  - Markup Language
+  - Documentation
+  - Technical Writing
+image: /images/paper.jpg
 description: ""
 toc:
 ---
@@ -18,13 +21,11 @@ toc:
 [sidebar]
 .About This Document
 --
-* *Summary:* Introduction of AsciiDoc and basics of writing AsciiDoc documents
-* *Intended Audience:* Beginners in mark-up languages, and those who are migrating from Markdown or other languages
-* *Written Context:* Self-initiated document written based on my own experience, serving as a straightforward guide to asciidoc documents.
+* *Summary:* This document provides an introduction to AsciiDoc, covering the fundamentals of writing AsciiDoc documents and converting them into PDF format.
+* *Intended Audience:* Beginners in mark-up languages, as well as users who are migrating from Markdown or other markup formats to AsciiDoc.
+* *Written Context:* This guide is self-initiated and based on my personal learning experience. It aims to offer a clear, practical reference for AsciiDoc documents.
 --
 
-
-// '''
 
 
 == Introduction
@@ -32,8 +33,9 @@ toc:
 
 === What is AsciiDoc
 
-AsciiDoc is a lightweight markup language^1^ used for writing structured documentation, with an `adoc` file extension. It has easy-to-read syntax, rich features, and flexible customization options, making it ideal for creating technical documentation, books, and web content. With https://docs.asciidoctor.org/asciidoctor/latest/[Asciidoctor], a Ruby tool, it can be converted into multiple formats such as HTML, PDF, and EPUB.
+AsciiDoc is a lightweight markup language<<mark-up-note, ^1^>> used for writing structured documentation, with an `adoc` file extension. It has easy-to-read syntax, rich features, and flexible customization options, making it ideal for creating technical documentation, books, and web content. With https://docs.asciidoctor.org/asciidoctor/latest/[Asciidoctor], a Ruby tool, it can be converted into multiple formats such as HTML, PDF, and EPUB.
 
+[#mark-up-note]
 [NOTE]
 ====
 . _Markup language_: A human-readable language that describes how content should be displayed or structured. Other markup languages include HTML, Markdown, LaTeX, and XML.
@@ -47,7 +49,7 @@ Markdown is one of the most popular markup languages, commonly used in blog post
 Due to its minimalistic design, it has become a favorite among general users, developers, and bloggers. However, compared to Markdown, AsciiDoc may be a better fit if you want to:
 
 * *Equip your document with more features.*   
-AsciiDoc natively supports advanced elements such as merging cells in tables and automatic cross-references between sections, without using extensions or plugins as Markdown does.
+AsciiDoc natively supports advanced elements such as merging cells in tables and automatic cross-references between documents, without using extensions or plugins as Markdown does.
 
 * *Customize the content and format more heavily.* 
 AsciiDoc allows you to fine-tune the presentation by defining custom roles to apply specific CSS classes, or using attributes to dynamically insert reusable values across your document, which Markdown does not support.
@@ -77,7 +79,6 @@ See below for popular editors and their available AsciiDoc support:
 |IntelliJ IDEA  |Install the AsciiDoc Plugin from the JetBrains marketplace.
 |===
 
-Later, when your document is ready for export, you can install a converter like Asciidoctor, which will be introduced in the Section xxx.
 
 
 == Writing AsciiDoc Documents
@@ -85,7 +86,7 @@ Later, when your document is ready for export, you can install a converter like 
 
 With your editor set up, you can begin your AsciiDoc project. To generate polished outputs like PDF or HTML, you'll need supporting files such as YAML configuration and custom font settings, and it's important to organize your project properly. 
 
-=== Document Structure Overview
+=== Document Structure
 
 Here is an example directory structure:
 ----
@@ -150,14 +151,50 @@ table:
 ----
 
 * *Customized Fonts*
-By default, AsciiDoc uses system fonts, but you can specify your own font families for different parts of the document such as body text and code blocks. If your document includes non-English characters, you may need to reference a custom font to support these characters.
+By default, AsciiDoc uses system fonts, but you can specify your own font families for different parts of the document such as body text and code blocks. If your document includes non-English characters, you need to reference a custom font to support these characters. See https://fonts.google.com/[Google Fonts] for a wide selection of fonts.
 
 
 === Basic Syntax
 
-Create and name your file with the `.adoc` extension. Use the following guide to learn the basics of AsciiDoc syntax and common elements.
+Create and name your file with the `.adoc` extension. See the following sections for the basics of AsciiDoc syntax and common elements.
 
 ==== Document Header
+The document header is _optional_, which encapsulates the document title, author, revision information, document-wide attributes, and other document metadata.
+
+[cols = "<4a,<4d", frame="all"]
+[options="header"]
+[%breakable]
+|===
+|An Example Header |Result
+|
+----
+= Main Title: Subtitle
+Anonymous Author <hello@email.com>
+1.1, February 28, 2025
+:description: The document's description.
+:doctype: article
+:toc:
+:toclevels: 2
+:sectnums:
+:sectanchors:
+
+== A 
+Document body A.
+
+=== Subsection of A
+Document body in the subsection of A.
+
+==== A Further Subsection
+This section is not shown in Table of Content, because the `:toclevels:` attribute is only set to 2.
+
+== B 
+Document body B.
+----
+
+|image:/images/portfolio/adoc-header-example.png[]
+
+
+|===
 
 
 ==== Sections and Breaks
@@ -180,7 +217,21 @@ Create and name your file with the `.adoc` extension. Use the following guide to
 
 
 |Page breaks |`<<<`   |
-|Thematic breaks|3 repeating characters of `'`, `-`, or `*`|
+|Thematic breaks|3 repeating characters of `'`, `-`, or `*`
+....
+Subject A 
+
+---
+
+Subject B
+....
+|Subject A 
+
+---
+
+Subject B
+
+
 |Line breaks |
 ----
 This is the first line. +
@@ -192,7 +243,7 @@ You can also add `:hardbreaks-option:` under the section title to activate line 
 This is the second line.
 |===
 
-You can also customize section ID generation, numbers and styles. See https://docs.asciidoctor.org/asciidoc/latest/sections/special-section-titles/[here] for more details.
+You can also customize section ID generation, numbers and styles. Refer to the official AsciiDoc documentation https://docs.asciidoctor.org/asciidoc/latest/sections/special-section-titles/[here] for more details.
 
 
 
@@ -389,9 +440,7 @@ m\|Using operator `m` for monospace style
 |image:/images/portfolio/adoc-table-example.png[]
 |==========
  
-You can also customize table width, format (such as using a CSV format), table caption, and more. Refer to https://docs.asciidoctor.org/asciidoc/latest/tables/build-a-basic-table/[AsciiDoc Docs] for more details.
-
-
+You can also customize table width, format (such as using a CSV format), table caption, and more. Refer to the official AsciiDoc documentation https://docs.asciidoctor.org/asciidoc/latest/tables/build-a-basic-table/[here] for more details.
 
 ==== Images
 
@@ -480,436 +529,414 @@ print(f"Hello, {first} {last}!")
 ----
 
 
-|Include content from another file into the current AsciiDoc document. | 
+|*`include` directive:* 
+Include content from another file into the current AsciiDoc document. | 
 ----
-\include::<path-to-file>[Optional text to display] 
+\include::<path-to-file>[Optional parameters here] 
 ----
+|
+|*`ifdef` and `ifndef` directives:* 
+Include or not include content if a specified attribute is set. 
+| 
+....
+\ifdef::env-github[]
+So much content here is for GitHub only.
+\endif::[]
+
+\ifndef::env-github[]
+So much content here is not shown on GitHub.
+\endif::[]
+....
+|
+
+|*`ifeval` directive:* 
+Include the content if the expression evaluates to true. 
+| 
+....
+\ifeval::[{sectnumlevels} == 3]
+If the `sectnumlevels` attribute is 3, this sentence is included.
+\endif::[]
+....
 |
 |==========
 
 
 
+== Converting AsciiDoc
+:hardbreaks-option:
 
-== Asciidoctor PDF
+AsciiDoc can be converted into various formats depending on your needs. This section primarily focuses on converting AsciiDoc to PDF, which is a common requirement for documentation and publishing.
 
-adoc -> pdf:: asciidoctor-pdf <attributes> <file name> +
+=== Installing Asciidoctor PDF
 
+Asciidoctor PDF is a Ruby-based tool that converts an AsciiDoc document directly to a PDF document. Here are the steps to install Asciidoctor PDF on different operating systems<<install-adoc-pdf-note,^1^>>:
 
+*On Windows*
 
+If you're using Windows with WSL2 (Windows Subsystem for Linux 2)<<install-adoc-pdf-note,^2^>>:
 
-
-*Attributes*: `-a`
-
-* pdf-theme  or  --theme 
-* pdf-themesdir
-* pdf-fontsdir
+. Check if you have Ruby available in your WSL2 terminal (e.g., Ubuntu):
 +
-[.zh]#字体路径后或许需添加# `,GEM_FONTS_DIR`
+----
+ruby -v
+----
 
+. If not, install Ruby:
++
+----
+sudo apt update
+sudo apt install ruby-full
+----
 
-Example Command: 
+. Install Asciidoctor and Asciidoctor PDF:
++
+----
+gem install asciidoctor
+gem install asciidoctor-pdf
+----
 
-  asciidoctor-pdf --theme path/to/theme/basic-theme.yml -a pdf-fontsdir=path/to/fonts render-me.adoc -o result.pdf
+. Verify the installation of Asciidoctor PDF:
++
+----
+asciidoctor-pdf -v
+----
 
-  asciidoctor-pdf -a pdf-theme=themes/adoc-notes-theme.yml -a pdf-fontsdir=fonts adoc-notes.adoc -o Asciidoctor-Notes-0516.pdf
-
-
-=== Images
-
-==== To set fonts in SVG images
-
-1. Create a file named [.underline]#xxx.cfg# and populate it with `skinparam defaultFontName Noto Serif` +
-2. Pass the path to the corresponding attribute in adoc (or via the CLI or API) +
-eg. `:xxxconfig: xxx.config`
-3. Clear the cache of your diagrams and run Asciidoctor PDF with Asciidoctor Diagram enabled.
-
+[#install-adoc-pdf-note]
 [NOTE]
 ====
-You are free to choose a font name registered in your PDF theme; if using the default theme, you can choose "Noto Serif", "M+ 1mn", and "M+ 1p Fallback"
+. If you are using Linux, the steps are similar to Windows with WSL2.
+
+. It is recommended to use WSL2 for easier management. If you haven't installed WSL2, refer to the https://learn.microsoft.com/en-us/windows/wsl/install[Microsoft's guide] for more details. However, if you only need quick and basic PDF export, you can directly install https://rubyinstaller.org/[Ruby] and Asciidoctor PDF on Windows. 
 ====
 
-==== To scale images
+
+---
 
 
-pdfwidth - pt (default), % (of content area) ...  +
-scale - percentage of the intrinsic width of the image +
+*On MacOS*
 
-[,yaml]
+. Check if you have Ruby available:
++
 ----
-  image:
-    width: 80%
-    caption:
-      end: bottom/top
-      text-align: inherit
+ruby -v
 ----
 
-[NOTE]
-====
-* image-width -> takes precedence over the width attribute on an image macro
-* image-caption-end -> caption location
-* image-caption-text-align  -> can inherit the alignment of the image
-====
-
-==== To add background images
-
-In adoc, define in the document header (or in the theme):
-
-  :page-background-image: path/to/image
-  :page-background-image-recto: path/to/image
-  :page-background-image-verso: path/to/image[fit=none, pdfwidth=50%]
-  :title-page-background-image: none
-
-You can also place a logo image on the title page:
-
-  :title-logo-image: image::path/to/image[top=25%,align=center,pdfwidth=0.5in]
-
-=== Pages
-
-==== To import pages
-
-Import pages as import images (the first page is imported by default):
-
-  image::xxx.pdf[page=3]  # import the third page  
-  image::xxx.pdf[pages=2;10..16]  #import the second page, and page 10 to 16
-
-
-==== To activate the title page
-
-* Set `:doctype: book`
-* Set `:title-page:` in the document header
-
-=== To Generate TOC
-
-Apply `:toc:` in the document title. +
-Apply `:toclevels: <number>` in the document title to set levels of toc.
-
-toc category keys (in yaml):
-
-[,yaml]
+. If not, install Ruby with Homebrew:
++
 ----
-  toc:
-    text-transform: uppercase
-    indent: 20
-    line-height: 1.5
-    break-after: auto
-    h3-font-color: #999999
-    h3-text-transform: none
-    title:
-      font-size: 18
-      text-align: right
-    dot-leader:
-      content: "."
-      font-style: bold
-      levels: 2 3
-      #if not specify dot-leader-levels, apply to all levels.
+brew install ruby
 ----
 
-Click https://docs.asciidoctor.org/pdf-converter/latest/theme/toc/[here] to see the full list of keys.
-
-=== PDF Outline
-
-The outline is generated by default. The title and section levels can be customized.
-
-Set in the document header: +
-`:outline-title:` <preferred title>  +
-`:outlinelevels: 3`  # can set between 1 to 5  +
-`:outlinelevels: 4:2`  #section level depth: level depth
-
-Set `[outlinelevels]` on the section's parent to override the `outlinelevels` document attribute
-
-To disable the outline, apply `:!outline:`
-
-=== Page Numbers
-
-  page:
-    numbering:
-      start-at: after-toc
-
-Other page-numbering-start-at values include `body` (default), `toc`, `cover`, `title`, and `integers`. See https://docs.asciidoctor.org/pdf-converter/latest/theme/page-numbers/[here] for difference.
-
-
-[,yaml]
+. Add Ruby to your `PATH` by appending the following line to your shell configuration file (e.g., `.zshrc` on macOS):
++
 ----
-extends: default
-footer:
-  columns: = 100%
+echo 'export PATH="/opt/homebrew/opt/ruby/bin:$PATH"' >> ~/.zshrc
+----
+
+
+. Install Asciidoctor and Asciidoctor PDF:
++
+----
+gem install asciidoctor
+gem install asciidoctor-pdf
+----
+
+. Verify the installation of Asciidoctor PDF:
++
+----
+asciidoctor-pdf -v
+----
+
+
+=== Generating PDF from AsciiDoc
+
+Once you have Asciidoctor PDF installed and your AsciiDoc files ready, you can convert them to PDF using the command line. Simply run `asciidoctor-pdf render-me.adoc` in the terminal.
+
+To customize the output, you can use a custom theme to control layout, fonts, color, table of content, and other elements. Here is a basic command with a customized theme:
+
+  asciidoctor-pdf --theme path/to/theme/basic-theme.yml -a pdf-fontsdir="path/to/fonts;GEM_FONTS_DIR" render-me.adoc -o output.pdf
+
+Several attributes (`-a`) can be used in the command:
+
+`--theme`:: To apply a custom theme. Without specification, the default theme will be used.
+`-a pdf-fontsdir`:: To specify the path to the fonts directory. Include `GEM_FONTS_DIR` if you also use bundled fonts (i.e., the default fonts included with Asciidoctor PDF).
+`-o`:: To specify the output file name.
+
+
+
+
+=== Sample PDF Output
+
+To give you a clear demonstration, this page was written in AsciiDoc. See this generated link:/files/AsciiDoc_Guide.pdf[*PDF output*, window=_blank] created using the following theme:
+
+
+----
+font:
+  catalog:
+    Noto Serif:
+      normal: GEM_FONTS_DIR/notoserif-regular-subset.ttf
+      bold: GEM_FONTS_DIR/notoserif-bold-subset.ttf
+      italic: GEM_FONTS_DIR/notoserif-italic-subset.ttf
+      bold_italic: GEM_FONTS_DIR/notoserif-bold_italic-subset.ttf
+    Roboto Mono:
+      normal: ../fonts/RobotoMono-Regular.ttf
+      bold: ../fonts/RobotoMono-Bold.ttf
+      italic: ../fonts/RobotoMono-Italic.ttf
+      bold_italic: ../fonts/RobotoMono-BoldItalic.ttf
+page:
+  background_color: FFFFFF
+  layout: portrait
+  margin: [0.65in, 0.5in, 0.65in, 0.5in]
+  size: A4
+  numbering:
+    start-at: after toc
+base:
+  text_align: justify
+  font_color: 333333
+  font_family: Noto Serif
+  font_size: 10
+  line_height_length: 13.5
+  font_size_large: round($base_font_size * 1.25)
+  font_size_small: round($base_font_size * 0.7)
+  font_size_min: $base_font_size * 0.75
+  font_style: normal
+  border_color: 333333ff
+  border_radius: 4
+  border_width: 0.7px
+role:
+  lead:
+    font_size: $base_font_size_large
+  line-through:
+    text_decoration: line-through
+  underline:
+    text_decoration: underline
+  big:
+    font_size: 1.2em
+  small:
+    font_size: 0.8em
+  subtitle:
+    font_color: 999999
+    font_size: 0.8em
+    font_style: normal_italic
+  my-custom-role:
+    font-color: #0000FF 
+
+vertical_rhythm: $base_line_height_length
+horizontal_rhythm: $base_line_height_length
+link:
+  font_color: 428BCA
+codespan:
+  font_color: #005A9C
+  font_family: Roboto Mono
+  font_size: 9
+button:
+  content: "[\u2009%s\u2009]"
+  font_style: bold
+heading:
+  text_align: left
+  font_color: $base_font_color
+  font_style: bold
+  h1_font_size: floor($base_font_size * 2.6)
+  h2_font_size: floor($base_font_size * 2.15)
+  h3_font_size: round($base_font_size * 1.7)
+  h4_font_size: $base_font_size_large
+  h5_font_size: $base_font_size
+  h6_font_size: $base_font_size_small
+  line_height: 1.7
+  margin_top: $vertical_rhythm * 0.3
+  margin_bottom: $vertical_rhythm * 0.5
+  min_height_after: auto
+  h1_line_height: 2.5
+title_page:
+  text_align: right
+  title:
+    top: 55%
+    font_size: $heading_h1_font_size
+    font_color: 333333
+    line_height: 0.9
+  authors:
+    margin_top: $base_font_size * 1.25
+    font_size: $base_font_size_large
+    font_color: 181818
+  revision:
+    margin_top: $base_font_size * 1.25
+block:
+  margin_bottom: $vertical_rhythm * 1.2
+caption:
+  align: center
+  font_size: $base_font_size * 0.95
+  font_style: italic
+  margin_inside: $vertical_rhythm / 3
+  margin_outside: 0
+admonition:
+  font_size: 9
+  font_color: 666666ff
+  column_rule_color: $base_border_color
+  column_rule_width: $base_border_width
+  padding:
+    [
+      $vertical_rhythm / 3.0,
+      $horizontal_rhythm,
+      $vertical_rhythm / 3.0,
+      $horizontal_rhythm,
+    ]
+  label:
+    text_transform: uppercase
+    font_style: bold
+quote:
+  font_size: $base_font_size_large
+  border_color: $base_border_color
+  border_width: 0
+  border_left_width: $horizontal_rhythm / 3
+  padding:
+    [
+      $vertical_rhythm / 4,
+      $horizontal_rhythm,
+      $vertical_rhythm / 4,
+      $horizontal_rhythm + $quote_border_left_width / 2,
+    ]
+  cite:
+    font_size: $base_font_size_small
+    font_color: $role_subtitle_font_color
+verse:
+  font_size: $quote_font_size
+  border_color: $quote_border_color
+  border_width: $quote_border_width
+  border_left_width: $quote_border_left_width
+  padding: $quote_padding
+  cite:
+    font_size: $quote_cite_font_size
+    font_color: $quote_cite_font_color
+# code is used for literal, listing, and source blocks and literal table cells
+code:
+  font_color: 444444ff
+  font_family: $codespan_font_family
+  font_size: 9
+  padding: 3
+  line_height: 1.1
+  # line_gap is an experimental property to control how a background color is applied to an inline block element
+  line_gap: 1
+  background_color: f9f9f9ff
+  border_color: CCCCCC
+  border_radius: 3
+  border_width: 0.3
+conum:
+  font_family: $codespan_font_family
+  font_color: $codespan_font_color
+  font_size: $base_font_size
+  line_height: 4 / 3
+  glyphs: circled
+image:
+  align: center
+prose:
+  margin_bottom: $block_margin_bottom
+sidebar:
+  background_color: EEEEEE
+  border_color: 666666ff
+  border_radius: $base_border_radius
+  border_width: $base_border_width
+  padding:
+    [
+      $vertical_rhythm,
+      $vertical_rhythm * 1.25,
+      $vertical_rhythm,
+      $vertical_rhythm * 1.25,
+    ]
+  title:
+    text_align: center
+    font_color: $heading_font_color
+    font_size: $heading_h4_font_size
+    font_style: $heading_font_style
+thematic_break:
+  border_color: $base_border_color
+  border_style: solid
+  border_width: $base_border_width
+  padding: [$vertical_rhythm * 0.5, 0]
+list:
+  indent: $horizontal_rhythm * 1.5
+  marker_font_color: 404040
+  item_spacing: 1.3
+  line_height_length: $base_line_height_length * 1.4
+  font_size: $base_font_size * 0.95
+  line_gap: 2
+description_list:
+  term_font_style: bold
+  term_spacing: $vertical_rhythm / 4
+  description_indent: $horizontal_rhythm * 1.25
+callout_list:
+  margin_top_after_code: -$block_margin_bottom / 2
+table:
+  align: center
+  font_size: 9
+  background_color: $page_background_color
+  border_color: 000000ff
+  border_width: $base_border_width
+  grid_width: $base_border_width
+  cell_padding: 4
+  head:
+    font-style: bold
+    background-color: 'CCCCCC'
+    font-size: 9
+    border-bottom-width: 0.25
+  caption:
+    font-size: 9
+    font-style: bold
+  body:
+    stripe_background_color: 999999ff
+  foot:
+    background_color: F0F0F0
+toc:
+  indent: $horizontal_rhythm
+  line_height: 1.58
+  dot_leader:
+    content: ". "
+    font_color: A9A9A9
+    levels: all
+  h2-font-style: bold
+footnotes:
+  font_size: round($base_font_size * 0.75)
+  item_spacing: $list_item_spacing / 2
+index:
+  column_gap: $vertical_rhythm
+header:
+  font_size: $base_font_size_small
+  line_height: 1.3
+  vertical_align: bottom
+  border_color: 333333
+  border_width: 0.15
+  height: 0.4in
+  padding: [$base_line_height_length / 2, 0, 1, 0]
+  font-family: Noto Serif
   recto:
-    center:
-      content: '(C) Copyright 2020 ACME. All rights reserved.'
     right:
-      content:'{page-number}'
+      content: "Getting Started with AsciiDoc"
+    left:
+      content: "image::../images/portfolio/tiger.png[pdfwidth=3%]"
+  verso:
+    right:
+      content: "{section-or-chapter-title}"
+    left:
+      content: "Getting Started with AsciiDoc"
+footer:
+  font_size: $base_font_size_small
+  # NOTE if background_color is set, background and border will span width of page
+  border_color: 333333
+  border_width: 0.15
+  height: 0.5in
+  line_height: 1.2
+  # padding: [$base_line_height_length / 1, 0, 2, 0]
+  vertical_align: top
+  recto:
+    left:
+      content: |
+        Copyright © 2025 Xintong Wang
+        For feedback or inquiries, please contact: mailto:xintong3248@gmail.com[]
+    right:
+      content: "{page-number}"
   verso:
     left:
-      content: '{page-number} of {page-count}'
-    center:
-      content: $header-recto-center-content
+      content: '{author} | Version {revnumber} ({revdate})'
+    right:
+      content: "{page-number}"
 
 ----
-
-To hide page numbers, do not include `{page-number}` in the footer
-
-
-If content is the same, to reduce the amount of configuring: 
-
-[,yaml]
-----
-  extends: default
-  footer:
-    columns: =100%
-    recto: &shared_footer
-      center:
-        content: '{page-number}'
-    verso: *shared_footer
-----
-
-=== Header and Footer
-:hardbreaks-option:
-
-* Attributes for your reference:
-
-page-count
-page-number 
-page-layout
-document-title
-document-subtitle
-part-title
-part-numeral 
-chapter-title
-chapter-numeral 
-section-title
-section-or-chapter-title
-
-* Multiple lines: 
-
-  content: |
-          Section Title - Page Number +
-          {section-or-chapter-title} - *{page-number}*
-
-* Add images: 
-
- content: image:footer-logo.png[pdfwidth=15pt]
-
-=== Index
-
-An index catelog contains all index items defined in the document, in alphabetical order.
-
-Include the following line near the end of the document
-
-  [index]
-  == Index
-
-
-=== Other Customization...
-
-==== To prevent the orphaning of the anchor and title of a table, section, or discrete heading
-
-Under the table heading, apply the breakable option: `[#optional-id%breakable]`
-
-
-Above the section title: `[%breakable]`
-
-If for all sections, set in the theme: 
-
-  heading:
-    min-height-after: auto
-
-
-If you use [%unbreakable], then the whole content will be advanced to the next page if it will break otherwise.
-
-==== To prevent wrapping the longest line
-
-  [source%autofit,java]
-  ----
-  Here are codes. +
-  The long line will not wrap, with decreased font size. 
-  ----
-
-To apply to the whole document: 
-
-  = Document Title
-  :autofit-option:
-
-
-==== To hide section titles or numbers
-
-Above the title, apply `[%notitle]` to hide the title: the title still shows up in the TOC.
-
-Above the title, apply `:sectnums!:` to unset the number of this section.
-
-
-
-==== To activate a syntax highlighter
-
-`gem install rouge`
-
-----
-= Document Title
-:source-highlighter: rouge
-----
-
-
-==== To customize figure/table captions
-:hardbreaks-option:
-
-Scenario: You want to use Figure X-X before the figure title for numbering.
-
-----
-== My Section
-:doc-part:2
-
-.My Image
-image::{imagesdir}/my-image.png[caption="Figure {doc-part}-{counter:figure} "]
-----
-
-To reference figures/tables, you can add the attribute `xrefstyle` (full/basic/short). 
-For example, for lists of figures/tables, you can use "full", but for main text, you can use "short".
-
-You can also customize reference text using `reftext=`
-
-
-=== Theme
-
-|====
-|Example |Notes
-
-a|
-  extends: default
-  base:
-    font-color: #FF0000
-
- extends:
- - default
- - ./brand-theme.yml
-
-a|`extends` (a theme can extend another theme)
-
-* You can extend the theme file giving the absolute/relative paths.
-* If the theme extends the https://github.com/asciidoctor/asciidoctor-pdf/tree/main/data/themes/base-theme.yml[base theme], you only have to declare keys that you want to override (others get inherited from the base theme)
-* If you don't want to extend any theme (not even the base theme), omit the `extends` key or assign the value "~" to the extends key.
-a|
-  font:
-    catalog:
-      Noto Sans:
-        normal: GEM_FONTS_DIR/notosans-regular-subset.ttf
-        bold: GEM_FONTS_DIR/notosans-bold-subset.ttf
-        italic: GEM_FONTS_DIR/notosans-italic-subset.ttf
-        bold_italic: GEM_FONTS_DIR/notosans-bold_italic-subset.ttf
-
-  font:
-    fallbacks:
-    - M+ 1p Fallback
-    - Noto Emoji
-
-a|`font`
-
-* custom fonts (catalog key): font paths
-* fallback fonts (fallbacks key): font names declared in the catalog (or that are inherited)
-
-
-a|
-  extends: default
-  footer:
-    recto:
-      right:
-        content: A recto page
-    verso:
-      left:
-        content: A verso page
-|
-a| 
-  extends: base
-  page:
-    layout: portrait
-    margin: [0.75in, 1in, 0.75in, 1in]
-    size: Letter
-  base:
-    font-color: #333333
-    font-family: Times-Roman
-    font-size: 12
-    line-height-length: 17
-    line-height: $base-line-height-length / $base-font-size
-  role:
-    removed:
-      font-style: italic
-      text-decoration: line-through
-      text-decoration-color: #FF0000
-  heading:
-    font-color: #262626
-    font-size: 17
-    font-style: bold
-    line-height: 1.2
-    margin-bottom: 10
-  link:
-    font-color: #002FA7
-  list:
-    indent: $base-font-size * 1.5
-
-|If the theme extends the https://github.com/asciidoctor/asciidoctor-pdf/tree/main/data/themes/base-theme.yml[base theme], you only have to declare keys that you want to override (others get inherited from the base theme)
-
-|====
-
-
-=== Other
-
-==== Install Asciidoctor PDF (`asciidoctor-pdf`)
-
-. Install ruby. Run `ruby -v` to check if ruby has been installed
-. Run `gem install asciidoctor-pdf`
-
-For more details, refer to https://docs.asciidoctor.org/pdf-converter/latest/
-
-====
-Asciidoctor PDF (gem: asciidoctor-pdf, command: asciidoctor-pdf) is published as a RubyGem to the rubygems.org software registry. You install Asciidoctor PDF from that registry using the RubyGem management tools provided by Ruby (bundle or gem). 
-====
-
-==== Install Fonts in WSL2
-
-1. Update the package index on your Linux distribution by running the following command:   
-`sudo apt update`
-
-2. Install the fontconfig package by running the following command:   
-`sudo apt install fontconfig`
-
-3. Download the font files in either TTF or OTF format.
-
-4. Copy the downloaded font files to the /usr/share/fonts/truetype directory in your Linux distribution. You can do this by running the following command:   
-`sudo cp /path/to/downloaded/fonts/*.ttf /usr/share/fonts/truetype`
-
-5. Update the font cache by running the following command:   
-`sudo fc-cache -fv`
-
-Run `fc-list` to check the list of installed fonts.
-
-
-
-=== Hi there - Some Quick References
-
-
-[width= "70%", cols=".^2,.^3,.^3"]
-[%hardbreaks]
-[%header]
-|===
-|Description  |Syntax   |Example
-|[.zh]#温度符号# | alt 0176         | °   
-|ohm          |                |Ω
-|[.zh]#加减号#  |alt 0177; alt 41408 |±     
-|[.zh]#平方#    |alt 0178           |²      
-|miu            |alt 0181          |µ       
-|[.zh]#空格#   | \&#8195;           |&#8195;     
-|en dash       | \&#150; alt 150         | –
-|em dash        |\&#151; alt 151     | —
-|[.zh]#上角标#  | Jitter\^1^      |Jitter^1^  
-|[.zh]#下角标#  | T\~Storage~          | T~Storage~  
-|[.zh]#颜色# RGB    2+|
-White: FFFFFF +
-Black: 000000 \| 333333 +
-Gray: 808080 \| EEEEEE \|F9F9F9 +
-Red: FF0000 +
-Green: 00FF00 +
-Blue: 0000FF + 
-Yellow: FFFF00 +
-Purple: 800080 +
-Cyan: 00FFFF +
-Orange: FF6600 
-
-|===
