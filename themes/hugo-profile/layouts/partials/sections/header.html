@@ -112,6 +112,16 @@
                     </li>
                     {{ end }}
 
+                    
+                    {{ if and (.Site.Params.portfolio.enable | default false) (not (.Site.Params.navbar.menus.disablePortfolio | default false)) }}
+                    <li class="nav-item navbar-text">
+                        <a class="nav-link" href="{{ .Site.BaseURL | relURL }}#portfolio"
+                            aria-label="portfolio">
+                            {{ default "Portfolio" }}
+                        </a>
+                    </li>
+                    {{ end }}                    
+
                     {{ if and (.Site.Params.projects.enable | default false) (not (.Site.Params.navbar.menus.disableProjects | default false)) }}
                     <li class="nav-item navbar-text">
                         <a class="nav-link" href="{{ .Site.BaseURL | relURL }}#projects"
@@ -121,14 +131,6 @@
                     </li>
                     {{ end }}
 
-                    {{ if and (.Site.Params.portfolio.enable | default false) (not (.Site.Params.navbar.menus.disablePortfolio | default false)) }}
-                    <li class="nav-item navbar-text">
-                        <a class="nav-link" href="{{ .Site.BaseURL | relURL }}#portfolio"
-                            aria-label="portfolio">
-                            {{ default "Portfolio" }}
-                        </a>
-                    </li>
-                    {{ end }}
                     
                     {{ if and (.Site.Params.achievements.enable | default false) (not (.Site.Params.navbar.menus.disableAchievements | default false)) }}
                     <li class="nav-item navbar-text">

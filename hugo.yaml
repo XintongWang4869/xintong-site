@@ -136,8 +136,8 @@ params:
       disableAbout: false
       disableExperience: false
       disableEducation: false
-      disableProjects: false
       disablePortfolio: false
+      disableProjects: false
       disableAchievements: true
       disableContact: true
 
@@ -149,7 +149,7 @@ params:
     # I explain tech and make it, too.
     subtitle: "I build with words and code."
     content: "A tech-savvy documentarian with great interest in software tooling, crafting well-structured documentation that translates complex concepts into clarity."
-    image: /images/hero.svg
+    image: /images/hero.png
     bottomImage:
       enable: true
     # roundImage: true # Make hero image circular | default false
@@ -175,7 +175,7 @@ params:
   about:
     enable: true
     title: "About Me"
-    image: "/images/me.png"
+    image: "/images/me.jpeg"
     content: |-
       I am a technical writer with a passion for web development and a background in applied linguistics. I am especially interested in the intersection of technology and language. I am currently working at a semiconductor company.
 
