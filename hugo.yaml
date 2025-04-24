@@ -344,7 +344,16 @@ params:
         links:
           - icon: fab fa-github
             url: https://github.com/XintongWang4869/ethernet-guide
-
+      - title: Getting Started with AsciiDoc
+        content: A beginner-friendly guide to AsciiDoc fundamentals and PDF conversion, based on personal experience and practical insights.
+        image: /images/paper.jpg
+        featured:
+          name: Read More
+          link: portfolio/guide-to-asciidoc/
+          new_window: false
+        badges:
+          - "AsciiDoc"
+          - "Asciidoctor PDF"
 
   #Contact
   contact:

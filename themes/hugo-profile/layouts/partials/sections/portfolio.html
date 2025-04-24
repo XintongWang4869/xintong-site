@@ -31,7 +31,8 @@
                         {{ end }}
                         {{ if .featured }}
                         <span class="float-end">
-                            <a class="btn btn-sm" href="{{ .featured.link }}" target="_blank">
+                            <a class="btn btn-sm" href="{{ .featured.link }}" 
+                            {{ if or (not (isset .featured "new_window")) (ne .featured.new_window false) }}target="_blank"{{ end }}>
                                 {{ .featured.name }}
                             </a>
                         </span>
