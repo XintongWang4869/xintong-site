@@ -63,17 +63,47 @@ pre, code {
   word-break: break-word;
 }
 
-/* Specifically target table cells too */
-.tableblock td pre, .tableblock th pre,
-.tableblock td code, .tableblock th code {
-  white-space: pre-wrap !important;
-  word-break: break-word;
-  overflow-wrap: break-word;
-  display: inline-block;
+
+/* display frames */
+.tableblock.frame-all {
+  border: 1px solid #ddd !important; /* outer frames */
+}
+
+.tableblock.grid-all th,
+.tableblock.grid-all td {
+  border: 1px solid #ddd !important; /* internal frames */
 }
 
 
+/* alignment */
+.tableblock.halign-left {
+  text-align: left !important;
+}
 
+
+.tableblock.valign-top {
+  vertical-align: top !important;
+}
+
+
+.tableblock th.halign-left {
+  text-align: left !important;
+}
+
+.tableblock.valign-middle {
+  vertical-align: middle !important;
+}
+
+.tableblock.valign-middle .tableblock {
+  margin: 0 !important; 
+  vertical-align: inherit !important; 
+}
+
+
+.tableblock td .content {
+  text-align: inherit !important;
+  vertical-align: inherit !important;
+}
 
 /* Admonitions (Notes, Tips, Warnings) */
 .admonitionblock {

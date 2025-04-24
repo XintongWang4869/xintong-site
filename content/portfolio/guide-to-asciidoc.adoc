@@ -70,7 +70,7 @@ Before you start writing AsciiDoc content, it's important to set up an editor th
 
 See below for popular editors and their available AsciiDoc support:
 
-[options="header"]
+[options="header",cols=".^~,.^~"]
 [%autowidth]
 |===
 |Text Editor  |AsciiDoc Support
@@ -199,12 +199,12 @@ Document body B.
 
 ==== Sections and Breaks
 
-[cols = "<4a,<6a,<6a", frame="all"]
+[cols = "4a,6a,6a", frame="all"]
 [options="header"]
 [%breakable]
 |===
 |Aspects  |Syntax |Result
-|Section levels |
+|*Section levels* |
 ----
 == Level 1 Section Title
 
@@ -216,8 +216,8 @@ Document body B.
 === Level 2 Section Title
 
 
-|Page breaks |`<<<`   |
-|Thematic breaks|3 repeating characters of `'`, `-`, or `*`
+|*Page breaks* |`<<<`   |
+|*Thematic breaks*|3 repeating characters of `'`, `-`, or `*`
 ....
 Subject A 
 
@@ -232,7 +232,7 @@ Subject B
 Subject B
 
 
-|Line breaks |
+|*Line breaks* |
 ----
 This is the first line. +
 This is the second line.
@@ -255,7 +255,8 @@ You can also customize section ID generation, numbers and styles. Refer to the o
 [%breakable]
 |===
 |Aspects  |Syntax |Result
-|Enclose the text with symbols.
+|*Direct formatting:* 
+Enclose the text with symbols.
 |
 ----
 *Bold text*
@@ -313,7 +314,7 @@ This is [.my-custom-role]#custom text#.
 [%breakable]
 |===
 |Aspects  |Syntax |Result
-|Ordered lists `.` |
+|*Ordered lists* `.` |
 ----
 . First item
 . Second item
@@ -321,7 +322,7 @@ This is [.my-custom-role]#custom text#.
 |. First item
 . Second item
 
-|Unordered lists `*` or `-` |
+|*Unordered lists* `*` or `-` |
 ----
 * Item
 * Another item
@@ -331,7 +332,7 @@ This is [.my-custom-role]#custom text#.
 * Another item
 ** Nested item 
 
-|Checklists `[ ]` |
+|*Checklists* `[ ]` |
 ----
 * [*] Checked
 * [x] Also checked
@@ -341,7 +342,7 @@ This is [.my-custom-role]#custom text#.
 * [x] Also checked
 * [ ] Not checked
 
-|Description lists `::` |
+|*Description lists* `::` |
 ----
 Cloud Providers::
   PaaS:::
@@ -371,14 +372,14 @@ Cloud Providers::
 [%breakable]
 |==========
 |Aspects  |Syntax |Result
-|URL and Link macros
+|*URL and Link macros*
 |
 ----
 Ask questions in the https://chat.asciidoc.org[*AsciiDoc community chat*, window=_blank].
 ----
 |Ask questions in the https://chat.asciidoc.org[*AsciiDoc community chat*, window=_blank].
 
-|Cross references 
+|*Cross references* 
 |. Assign an ID to the target section: add `[#set-link-id]` above the target section. 
 . At where you want to reference:
 ----
@@ -390,7 +391,7 @@ Using a section's title such as <<Links>> without assigning ID.
 
 Using a section's title such as <<Links>> without assigning ID.
 
-|Inter-document xref  | 
+|*Inter-document xref*  | 
 ----
 Why a tiger icon? See my xref:[path-to-file]#section-id[Text to Display]!
 ----
@@ -474,7 +475,7 @@ image::/tiger.png[tiger, 50, 50, align="center"]
 [%breakable]
 |==========
 |Aspects  |Syntax |Result
-|Admonitions including:
+|*Admonitions*, including:
 
 - NOTE
 - TIP
@@ -483,7 +484,9 @@ image::/tiger.png[tiger, 50, 50, align="center"]
 - WARNING  
 
 |----
-WARNING: this is a warning.
+WARNING: This is a warning!
+
+
 
 [NOTE] 
 ==== 
@@ -494,7 +497,7 @@ This is a note section:
 ====
 ----
 
-|WARNING: this is a warning.
+|WARNING: This is a warning!
 
 [NOTE] 
 ==== 
@@ -505,13 +508,13 @@ This is a note section:
 ====
 
 
-|Footnote (`footnote:[]`)  |
+|*Footnote* (`footnote:[]`)  |
 ----
 This is my footnote footnote:[Example footnote at the end of the page].
 ----
 |This is my footnote footnote:[Example footnote at the end of the page].
 
-|Source code blocks
+|*Source code blocks*
 |
 ....
 [source, python]
@@ -535,7 +538,7 @@ Include content from another file into the current AsciiDoc document. |
 \include::<path-to-file>[Optional parameters here] 
 ----
 |
-|*`ifdef` and `ifndef` directives:* 
+|*`ifdef`/`ifndef` directives:* 
 Include or not include content if a specified attribute is set. 
 | 
 ....

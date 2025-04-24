@@ -1,4 +1,4 @@
-baseURL: "https://hugo-profile.netlify.app"
+baseURL: "https://xintong-wang.netlify.app"
 languageCode: "en-us"
 title: "Xintong's Site"
 theme: hugo-profile
@@ -33,6 +33,7 @@ markup:
     extensions: []
     attributes:
       outfilesuffix: /
+      stylesheet: /css/custom.css
 
 security:
   exec:
