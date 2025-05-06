@@ -331,6 +331,26 @@ params:
     enable: true
     title: "Documentation Portfolio"
     items:
+      - title: 'Hugo Profile Docs Contribution'
+        content: 'Open source documentation contribution to the Hugo Profile project: improved README structure, clarity, and usability for new users.'
+        image: /images/portfolio/hugo-profile.png
+        featured:
+          name: Read More
+          link: portfolio/open-source-hugo-profile/
+          new_window: false
+        badges:
+          - "Open Source"
+          - "Hugo Profile Theme"       
+      - title: Getting Started with AsciiDoc
+        content: A beginner-friendly guide to AsciiDoc fundamentals and PDF conversion, based on personal experience and practical insights.
+        image: /images/paper.jpg
+        featured:
+          name: Read More
+          link: portfolio/guide-to-asciidoc/
+          new_window: false
+        badges:
+          - "AsciiDoc"
+          - "Asciidoctor PDF"    
       - title: Ethernet Study Notes
         content: A personal knowledge base introducing Ethernet technology, covering standards, protocols, and applications.
         image: /images/portfolio/ethernet-background.jpg
@@ -344,16 +364,7 @@ params:
         links:
           - icon: fab fa-github
             url: https://github.com/XintongWang4869/ethernet-guide
-      - title: Getting Started with AsciiDoc
-        content: A beginner-friendly guide to AsciiDoc fundamentals and PDF conversion, based on personal experience and practical insights.
-        image: /images/paper.jpg
-        featured:
-          name: Read More
-          link: portfolio/guide-to-asciidoc/
-          new_window: false
-        badges:
-          - "AsciiDoc"
-          - "Asciidoctor PDF"
+
 
   #Contact
   contact:
