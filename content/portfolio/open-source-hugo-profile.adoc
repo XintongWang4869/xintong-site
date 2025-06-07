@@ -3,7 +3,7 @@ date: '2025-05-06T12:44:47+08:00'
 draft: false
 title: 'Hugo Profile Docs Contribution'
 _build:
-  list: never
+  list: local
   render: always
 github_link: "https://github.com/gurusabarish/hugo-profile/pull/233"
 author: "Xintong Wang"
