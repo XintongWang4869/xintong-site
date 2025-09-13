@@ -8,12 +8,12 @@ _build:
 github_link: "https://github.com/gurusabarish/hugo-profile/pull/233"
 author: "Xintong Wang"
 tags:
-  - Markdown
-  - Markup Language
+  - Open source
   - README
-  - Open Source
+  - Markdown
+  - Hugo theme
   - Documentation
-  - Technical Writing
+  - Technical writing
 image: /images/portfolio/hugo-profile.png
 description: ""
 toc:
@@ -24,32 +24,36 @@ toc:
 [sidebar]
 .About
 --
-* *Summary:* Contributed improvements to the `README.md` of an open-source Hugo theme (`hugo-profile`) to enhance clarity, structure, and usability for first-time users (https://github.com/gurusabarish/hugo-profile/pull/233[_Pull Request: #233_, window=_blank]).
+* *Summary:* Improved the `README.md` of an open-source Hugo theme (`hugo-profile`) to enhance clarity, structure, and usability for first-time users.
 * *Intended Audience:* Beginners building personal websites with Hugo.
 * *Written Context:* GitHub pull request contribution to the upstream project.
 --
 
-== Contributions
+== Rewritten README
 
-- Rewrote, reformat, and reorganize sections to improve the overall structure and clarity of the `README.md` file.
+*The rewritten README.md is available here: https://github.com/XintongWang4869/hugo-profile/tree/update-readme[Github Link🔗, window=_blank]*.
 
-- Added step-by-step instructions in Quick Start section to make it more beginner-friendly.
+My contributions mainly include:
+
+- Rewrote, reformated, and reorganized sections to improve the overall structure and clarity of the README.
+
+- Added step-by-step instructions in the Quick Start section to make it more beginner-friendly.
 
 - Fixed a broken shortcode example (`x`) by replacing it with the correct `tweet` shortcode.
 
-See the https://github.com/gurusabarish/hugo-profile/pull/233[*pull request*, window=_blank] on GitHub for details.
 
+For full details, see the https://github.com/gurusabarish/hugo-profile/pull/233[*pull request*, window=_blank] on GitHub.
 
 == README Comparison
 
 The original README had a flat structure with minimal sectioning. In the improved version, the content is logically organized, with clearly separated sections for setup, content management, and deployment. This makes it easier for beginners to follow.
 
-[cols="1,2,2", options="header"]
+[cols=".^1,.^2,.^2", options="header"]
 |===
 | Aspect              | Before     | After (Improved)     
 
 | Requirements        | Brief mention of Hugo version only            | Expanded with version check command and install link   
-| Getting Started     | Basic setup steps without much explanation or trouble-shootings    | Step-by-step _Quick Start_ section from site creation to local preview                      
+| Getting Started     | Basic setup steps without much explanation or trouble-shootings    | A step-by-step _Quick Start_ section from site creation to local preview                      
 | Content Management  | Only a few reference links      | New section on editing site content 
 | Deployment          | Basic Netlify usage                            | Clear options for Netlify (template vs manual setup) and static hosting             
                   
@@ -57,7 +61,7 @@ The original README had a flat structure with minimal sectioning. In the improve
 |===
 
 
-See below for screenshots of the original and improved README. The updated version is broken into clearer sections for better usability:
+See below for screenshots of the original and improved README. The updated version is broken into sections for better usability:
 
 === Before
 

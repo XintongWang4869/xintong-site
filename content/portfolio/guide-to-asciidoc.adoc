@@ -10,9 +10,9 @@ author: "Xintong Wang"
 tags:
   - AsciiDoc
   - Asciidoctor PDF
-  - Markup Language
+  - Markup language
   - Documentation
-  - Technical Writing
+  - Technical writing
 image: /images/paper.jpg
 description: ""
 toc:

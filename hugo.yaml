@@ -341,6 +341,16 @@ params:
         badges:
           - "Open Source"
           - "Hugo Profile Theme"       
+      - title: Switch Functions in Automotive Ethernet Networks
+        content: An accessible overview of Ethernet switch functions in automotive networks, covering frame forwarding, VLANs, QoS, TSN, multicast control, and security.
+        image: /images/portfolio/ethernet-switch.jpg
+        featured:
+          name: Read More
+          link: portfolio/switch-functions/
+          new_window: false
+        badges:
+          - "Ethernet"  
+          - "AsciiDoc"
       - title: Getting Started with AsciiDoc
         content: A beginner-friendly guide to AsciiDoc fundamentals and PDF conversion, based on personal experience and practical insights.
         image: /images/paper.jpg
@@ -358,6 +368,7 @@ params:
           name: Demo
           link: https://xintongwang4869.github.io/ethernet-guide/
         badges:
+          - "Ethernet"
           - "Hugo"
           - "Docsy"
           - "Markdown"

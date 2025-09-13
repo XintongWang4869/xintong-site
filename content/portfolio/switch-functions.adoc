@@ -1,0 +1,120 @@
+---
+title: "An Overview of Switch Functions in Automotive Ethernet Networks"
+date: 2025-09-13T13:42:09+02:00
+draft: false
+_build:
+  list: local
+  render: always
+github_link: ""
+author: "Xintong Wang"
+tags:
+  - Ethernet Switch
+  - Automotive Ethernet
+  - Automotive Communication
+  - In-Vehicle Networks
+image: /images/portfolio/ethernet-switch.jpg
+description: ""
+toc:
+---
+
+:toc: auto
+:toclevels: 4
+
+
+[sidebar]
+.About This Document
+--
+* *Summary:* A high-level conceptual overview of Ethernet switch functions in automotive networks, including frame forwarding, VLANs, QoS, TSN, multicast control, and security, highlighting their role in reliable and secure in-vehicle communication.
+* *Intended Audience:* Technical professionals or readers seeking background knowledge on automotive Ethernet switch functions.
+* *Written Context:* A self-initiated conceptual overview, designed as a writing sample rather than an in-depth specification or design guide.
+--
+
+
+
+== Introduction
+
+As vehicles shift from hardware-based designs to software-controlled systems, they require fast, reliable, and secure communication between electronic components. Earlier vehicle networks such as the Controller Area Network (CAN) or the Local Interconnect Network (LIN) are no longer sufficient for high-bandwidth applications like advanced driver assistance systems (ADAS) and infotainment.
+
+Ethernet, widely used in the IT world, is now being adopted in the automotive domain because it offers scalability, high data rates, and compatibility with open standards. An Ethernet switch is a fundamental component of the network, responsible for directing traffic between connected devices such as sensors, cameras, and control units.
+
+This article introduces the key functions of Ethernet switches in automotive networks and explains how they support efficient and reliable communication.
+
+== Core Switching Functions
+
+=== Frame Forwarding
+
+Ethernet switches forward frames based on the destination MAC (Media Access Control) address, a unique identifier assigned to each network device.
+
+Each switch port maintains a forwarding table mapping MAC addresses to physical interfaces. When a frame arrives, the switch consults this table to determine the correct output port. If the destination address is not found, the switch floods the frame to all ports. 
+
+This mechanism ensures optimal bandwidth utilization while preventing unnecessary data transmission across the network.
+
+
+=== Virtual LANs (VLANs)
+
+Ethernet switches use Virtual LANs (VLANs) to logically separate network traffic, even when multiple devices share the same physical switch. VLAN tags embedded in Ethernet frames instruct the switch on how to handle and route traffic, rather than relying on physical topology.
+
+In automotive networks, VLANs are commonly used to separate:
+
+* Safety-critical traffic (e.g., braking and steering control signals)  
+* Infotainment traffic (e.g., audio and video streaming)  
+* Diagnostic traffic (e.g., maintenance and system monitoring)  
+
+By isolating different data streams with VLANs, the switch maintains reliable communication and enhances network security.
+
+=== Quality of Service (QoS)
+
+Automotive networks carry traffic with varying latency requirements. Some data, such as sensor information for collision avoidance, must be delivered with minimal delay, whereas other data, such as software updates, can tolerate longer transmission times.
+
+Switches implement Quality of Service (QoS) to prioritize critical traffic. Common strategies include: 
+
+* **Priority queuing** – transmitting high-priority messages first
+* **Traffic shaping** – controlling data flow to prevent congestion
+* **Scheduling algorithms** – balancing latency and fairness, often using strict priority<<note-A, ^1^>> or weighted round-robin methods<<note-A, ^2^>>
+
+QoS ensures that essential data is delivered reliably and predictably, even under high network load.
+
+[#note-A]
+[NOTE]
+====
+. _Strict priority (SP)_: A scheduling algorithm, always sending higher-priority traffic before lower-priority traffic; lower-priority traffic may be delayed or starved.
+
+. _Weighted Round-Robin (WRR)_: A scheduling algorithm, assigning bandwidth proportionally to ensure all traffic types get a guaranteed share while still prioritizing critical messages.
+====
+
+=== Time-Sensitive Networking (TSN)
+
+To meet real-time requirements, Ethernet switches provides Time-Sensitive Networking (TSN) standards. TSN enables deterministic delivery of data by controlling when and how traffic is transmitted. Key features include:
+
+* **Time-aware scheduling** – sending data at precisely scheduled times, using synchronized time slots shared across all devices
+* **Bounded latency** – ensuring that data arrives within a fixed, predictable time window
+
+These capabilities are vital for safety-relevant applications such as surround-view cameras and autonomous driving, where consistent and reliable data delivery directly affects safety.
+
+== Advanced Switching Features
+
+=== Multicast and Broadcast Control
+
+In some cases, the same data needs to be sent to multiple devices simultaneously, and the switch uses multicast forwarding to efficiently deliver a single stream to multiple destinations.
+
+To prevent network overload from excessive broadcast or multicast traffic, which can degrade performance, switches use mechanisms such as IGMP snooping and rate limiting:
+
+* **IGMP snooping**: The switch monitors Internet Group Management Protocol (IGMP) messages to identify which devices are subscribed to a given multicast stream, preventing it from flooding the traffic to all ports.
+
+* **Rate limiting**: The switch limits the amount of broadcast or multicast traffic on a port, preventing any single stream from consuming too much bandwidth.
+
+These mechanisms ensure that only the intended recipients receive the data and preserve network bandwidth for high-priority traffic.
+
+=== Security and Access Control
+
+As vehicles become connected to external networks, securing in-vehicle networks is paramount. Switches can enforce security policies such as:  
+
+* **Port-based access control (IEEE 802.1X)** – authenticating devices before granting network access  
+* **MAC address filtering** – blocking unknown or unauthorized devices
+* **Intrusion detection** – monitoring for unusual or malicious traffic
+
+These functions help safeguard the vehicle against external threats and unauthorized access, ensuring the integrity and safety of communication.
+
+== Conclusion
+
+Ethernet switches play a crucial role in modern automotive networks. By forwarding frames, segmenting traffic with VLANs, prioritizing critical data with QoS, and supporting real-time delivery through TSN, they enable efficient, reliable, and secure communication across electronic systems. Understanding switch functions provides insight into how vehicles manage growing data volumes and how switches support the performance, safety, and connectivity of next-generation vehicles.
