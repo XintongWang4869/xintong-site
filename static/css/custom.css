@@ -1,3 +1,11 @@
+/* ========== Misc styling ========== */
+
+.education-content ul li,
+.education-content ol li {
+  margin-bottom: 1em;
+  /* Adjust value as needed */
+}
+
 /* ========== TOC styling ========== */
 
 .toc,
