@@ -8,10 +8,16 @@ _build:
 github_link: ""
 author: "Xintong Wang"
 tags:
-  - Ethernet Switch
-  - Automotive Ethernet
-  - Automotive Communication
-  - In-Vehicle Networks
+  - automotive ethernet
+  - ethernet switch
+  - in-vehicle networks
+  - automotive communication
+  - vlan
+  - quality of service
+  - time-sensitive networking
+  - multicast
+  - security
+  - writing sample
 image: /images/portfolio/ethernet-switch.jpg
 description: ""
 toc:
@@ -29,7 +35,7 @@ toc:
 * *Written Context:* A self-initiated conceptual overview, designed as a writing sample rather than an in-depth specification or design guide.
 --
 
-
+:sectnums:
 
 == Introduction
 
@@ -50,19 +56,19 @@ Each switch port maintains a forwarding table mapping MAC addresses to physical 
 This mechanism ensures optimal bandwidth utilization while preventing unnecessary data transmission across the network.
 
 
-=== Virtual LANs (VLANs)
+=== Virtual LANs
 
 Ethernet switches use Virtual LANs (VLANs) to logically separate network traffic, even when multiple devices share the same physical switch. VLAN tags embedded in Ethernet frames instruct the switch on how to handle and route traffic, rather than relying on physical topology.
 
 In automotive networks, VLANs are commonly used to separate:
 
-* Safety-critical traffic (e.g., braking and steering control signals)  
-* Infotainment traffic (e.g., audio and video streaming)  
-* Diagnostic traffic (e.g., maintenance and system monitoring)  
+* *Safety-critical traffic* (e.g., braking and steering control signals)  
+* *Infotainment traffic* (e.g., audio and video streaming)  
+* *Diagnostic traffic* (e.g., maintenance and system monitoring)  
 
 By isolating different data streams with VLANs, the switch maintains reliable communication and enhances network security.
 
-=== Quality of Service (QoS)
+=== Quality of Service
 
 Automotive networks carry traffic with varying latency requirements. Some data, such as sensor information for collision avoidance, must be delivered with minimal delay, whereas other data, such as software updates, can tolerate longer transmission times.
 
@@ -77,12 +83,12 @@ QoS ensures that essential data is delivered reliably and predictably, even unde
 [#note-A]
 [NOTE]
 ====
-. _Strict priority (SP)_: A scheduling algorithm, always sending higher-priority traffic before lower-priority traffic; lower-priority traffic may be delayed or starved.
+. ***Strict priority (SP)***: A scheduling algorithm, always sending higher-priority traffic before lower-priority traffic; lower-priority traffic may be delayed or starved.
 
-. _Weighted Round-Robin (WRR)_: A scheduling algorithm, assigning bandwidth proportionally to ensure all traffic types get a guaranteed share while still prioritizing critical messages.
+. ***Weighted Round-Robin (WRR)***: A scheduling algorithm, assigning bandwidth proportionally to ensure all traffic types get a guaranteed share while still prioritizing critical messages.
 ====
 
-=== Time-Sensitive Networking (TSN)
+=== Time-Sensitive Networking
 
 To meet real-time requirements, Ethernet switches provides Time-Sensitive Networking (TSN) standards. TSN enables deterministic delivery of data by controlling when and how traffic is transmitted. Key features include:
 

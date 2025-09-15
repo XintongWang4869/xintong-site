@@ -1,3 +1,42 @@
+/* ========== TOC styling ========== */
+
+.toc,
+.toc ul,
+.toc ol,
+.toc li a {
+  font-size: 0.9rem !important;
+  line-height: 1.7 !important;
+
+}
+
+.toc ul,
+.toc ol {
+  padding-left: 0 !important;
+  margin-left: 0.4em !important;
+  list-style-position: inside !important;
+}
+
+.toc li {
+  margin-bottom: 0.5em !important;
+  margin-left: 0 !important;
+
+}
+
+/* ========== Tag styling ========== */
+
+
+.tag,
+.tags,
+.tags a {
+  font-size: 0.9rem !important;
+}
+
+.tags ul {
+  padding-left: 0 !important;
+  margin-left: -1em !important;
+}
+
+
 /* ========== General AsciiDoc Styling ========== */
 .big {
   font-size: 2em;
@@ -17,7 +56,10 @@
 
 
 /* Section Titles */
-.sect1 > h2, .sect2 > h3, .sect3 > h4, .sect4 > h5 {
+.sect1>h2,
+.sect2>h3,
+.sect3>h4,
+.sect4>h5 {
   font-weight: 700;
   margin-top: 2em;
   margin-bottom: 1em;
@@ -26,24 +68,45 @@
   color: #2c3e50;
 }
 
+
+
 /* Paragraphs */
 .paragraph p {
-  margin: 0.6em 0;
-  line-height: 1.75;
+  /* margin: 0.6em 0; */
+  line-height: 1.65;
+  margin-bottom: 1.1em;
   font-size: 1rem;
   color: #333;
 }
 
+h1 {
+  font-size: 2.4rem;
+  /* custom size */
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+h4 {
+  font-size: 1rem;
+}
+
 /* Lists (ulist and olist) */
-ul, ol {
-  padding-left: 1.5em;
-  margin-top: 0.5em;
-  margin-bottom: 0.5em;
+ul,
+ol {
+  /* padding-left: 1.7em; */
+
+  line-height: 1.65;
   font-size: 1rem;
 }
 
 li {
-  margin: 0.2em 0;
+  margin: -0.5em 1em;
   list-style-position: outside;
   font-size: 1rem;
 }
@@ -51,12 +114,14 @@ li {
 
 /* Tables */
 table {
-  font-size: 0.9rem; /* Smaller font size */
+  font-size: 0.9rem;
+  /* Smaller font size */
 }
 
 
 /* General code block and inline code wrapping */
-pre, code {
+pre,
+code {
   white-space: pre-wrap !important;
   word-break: break-word;
   overflow-wrap: break-word;
@@ -66,12 +131,14 @@ pre, code {
 
 /* display frames */
 .tableblock.frame-all {
-  border: 1px solid #ddd !important; /* outer frames */
+  border: 1px solid #ddd !important;
+  /* outer frames */
 }
 
 .tableblock.grid-all th,
 .tableblock.grid-all td {
-  border: 1px solid #ddd !important; /* internal frames */
+  border: 1px solid #ddd !important;
+  /* internal frames */
 }
 
 
@@ -95,8 +162,8 @@ pre, code {
 }
 
 .tableblock.valign-middle .tableblock {
-  margin: 0 !important; 
-  vertical-align: inherit !important; 
+  margin: 0 !important;
+  vertical-align: inherit !important;
 }
 
 
@@ -106,55 +173,77 @@ pre, code {
 }
 
 /* Admonitions (Notes, Tips, Warnings) */
+
 .admonitionblock {
-  background: #f9f9f9;
+
   border-left: 5px solid #2196F3;
-  padding: 0.75em 1em;
-  margin: 1em 0;
+  padding: 1em 1.5em 0em 1.5em;
+  padding-block-end: 0.1em;
+  margin: 2em 2em 3.5em 3em;
   border-radius: 4px;
-  font-size: 0.9rem !important;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.08);
+
 }
+
 
 .admonitionblock .title {
   font-weight: bold;
-  margin-bottom: 0.3em;
 }
 
-/* Colors by type */
-.admonitionblock.note {
-  border-color: #2196F3;
-  background: #eef6fd;
+.admonitionblock .content p {
+  font-size: 0.9rem;
+  font-style: italic;
+  line-height: 1.65;
+  /* margin-bottom: -1.5em; */
+  margin-right: -1.5em;
+
 }
+
+
+/* Colors by type */
+/* not working below */
+.admonitionblock.note {
+  /* border-color: #2196F3 !important; */
+  background: #eef6fd !important;
+}
+
 .admonitionblock.tip {
   border-color: #4CAF50;
   background: #e8f5e9;
 }
+
 .admonitionblock.warning {
   border-color: #FF9800;
   background: #fff3e0;
 }
+
 .admonitionblock.caution {
   border-color: #f44336;
   background: #ffebee;
 }
+
 .admonitionblock.important {
   border-color: #9c27b0;
   background: #f3e5f5;
 }
 
 /* Code Blocks */
-.listingblock pre, .literalblock pre {
+.listingblock pre,
+.literalblock pre {
   background: #272822;
   color: #f8f8f2;
   padding: 1em;
   border-radius: 5px;
   overflow-x: auto;
-  font-size: 0.85rem; /* smaller font */
+  font-size: 0.85rem;
+  /* smaller font */
   line-height: 1.4;
 }
 
 /* Inline Code */
-.literal span, .monospaced span, code {
+.literal span,
+.monospaced span,
+code {
   background-color: #eee;
   padding: 0.2em 0.4em;
   border-radius: 3px;
@@ -201,19 +290,22 @@ hr {
 }
 
 /* New: Match the title correctly inside sidebar */
-.sidebarblock .content > .title {
+.sidebarblock .content>.title {
   text-align: center;
   font-size: 1.2rem;
   font-weight: bold;
   margin-bottom: 1em;
+  color: #555;
 }
 
 .sidebarblock .content {
-  font-size: 0.95rem;
-  line-height: 1.6;
+  line-height: 1.65;
   color: #333;
 }
 
 .sidebarblock .content p {
   margin: 0.5em 0;
+  font-size: 0.9rem;
+  margin-bottom: 1em;
+  color: #555;
 }

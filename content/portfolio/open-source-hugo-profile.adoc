@@ -8,18 +8,21 @@ _build:
 github_link: "https://github.com/gurusabarish/hugo-profile/pull/233"
 author: "Xintong Wang"
 tags:
-  - Open source
-  - README
-  - Markdown
-  - Hugo theme
-  - Documentation
-  - Technical writing
+  - open source
+  - readme
+  - markdown
+  - hugo theme
+  - documentation
+  - technical writing
+  - writing sample
+  - contribution
 image: /images/portfolio/hugo-profile.png
 description: ""
 toc:
 ---
 
 :toc: auto
+:sectnums:
 
 [sidebar]
 .About

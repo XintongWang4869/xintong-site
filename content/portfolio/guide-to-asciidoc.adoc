@@ -8,18 +8,21 @@ _build:
 github_link: ""
 author: "Xintong Wang"
 tags:
-  - AsciiDoc
-  - Asciidoctor PDF
-  - Markup language
-  - Documentation
-  - Technical writing
+  - asciidoc
+  - asciidoctor pdf
+  - markup language
+  - documentation
+  - technical writing
+  - writing sample
+  - guide
+  - tutorial
 image: /images/paper.jpg
 description: ""
 toc:
 ---
 :toc: auto
 :toclevels: 4
-
+:sectnums:
 
 [sidebar]
 .About This Document
@@ -41,7 +44,7 @@ AsciiDoc is a lightweight markup language<<mark-up-note, ^1^>> used for writing 
 [#mark-up-note]
 [NOTE]
 ====
-. _Markup language_: A human-readable language that describes how content should be displayed or structured. Other markup languages include HTML, Markdown, LaTeX, and XML.
+. ***Markup language***: A human-readable language that describes how content should be displayed or structured. Other markup languages include HTML, Markdown, LaTeX, and XML.
 ====
 
 === AsciiDoc vs. Markdown
