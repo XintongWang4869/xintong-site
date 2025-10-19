@@ -2,7 +2,7 @@
 <section id="education" class="py-5">
     <div class="container">
         <h3 class="text-center">{{ .Site.Params.education.title | default "Education" }}</h3>
-        <div class="row justify-content-center py-5">
+        <div class="row justify-content-center py-5 default-font">
             {{ $indexMenu := .Site.Params.education.index }}
             {{ range $index, $element := .Site.Params.education.items }}
             <div class="col-12 p-0">
@@ -24,11 +24,11 @@
                                     <small>{{ .date }}</small>
                                 </div>
                                 <h5 class="card-title">{{ .title }}</h5>
-                                
+
                                 {{ if .school.url }}
                                 <a href="{{ .school.url }}" target="_blank">
                                     <h6>
-                                    {{ .school.name }}
+                                        {{ .school.name }}
                                     </h6>
                                 </a>
                                 {{ else }}
@@ -40,12 +40,15 @@
                                     GPA:
                                     <i>
                                         <small>{{ .GPA }}</small>
-                                    </i> 
+                                    </i>
                                 </div>
                                 {{ end }}
-                                <div class="py-1 education-content">
-                                    {{ .content | markdownify}}
+                                <div class="py-1">Highlights:
+                                    <div class="py-1 education-content mt-2">
+                                        <small>{{ .content | markdownify}}</small>
+                                    </div>
                                 </div>
+
 
                                 {{ if .featuredLink.enable }}
                                 <div class="py-1">

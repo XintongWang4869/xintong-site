@@ -8,16 +8,9 @@ _build:
 github_link: ""
 author: "Xintong Wang"
 tags:
-  - automotive ethernet
-  - ethernet switch
-  - in-vehicle networks
-  - automotive communication
-  - vlan
-  - quality of service
-  - time-sensitive networking
-  - multicast
-  - security
-  - writing sample
+  - ethernet
+  - asciidoc
+  - technical writing
 image: /images/portfolio/ethernet-switch.jpg
 description: ""
 toc:
@@ -30,9 +23,9 @@ toc:
 [sidebar]
 .About This Document
 --
-* *Summary:* A high-level conceptual overview of Ethernet switch functions in automotive networks, including frame forwarding, VLANs, QoS, TSN, multicast control, and security, highlighting their role in reliable and secure in-vehicle communication.
-* *Intended Audience:* Technical professionals or readers seeking background knowledge on automotive Ethernet switch functions.
-* *Written Context:* A self-initiated conceptual overview, designed as a writing sample rather than an in-depth specification or design guide.
+* *Summary:* A high-level overview of Ethernet switch functions in automotive networks, emphasizing their role in enabling reliable and secure in-vehicle communication.
+* *Intended Audience:* Technical professionals or readers seeking a foundational understanding of automotive Ethernet switch functions.
+* *Written Context:* A self-initiated conceptual overview, created as a writing sample rather than a detailed specification or design guide.
 --
 
 :sectnums:

@@ -9,13 +9,9 @@ github_link: "https://github.com/gurusabarish/hugo-profile/pull/233"
 author: "Xintong Wang"
 tags:
   - open source
-  - readme
   - markdown
-  - hugo theme
-  - documentation
+  - hugo
   - technical writing
-  - writing sample
-  - contribution
 image: /images/portfolio/hugo-profile.png
 description: ""
 toc:
@@ -29,18 +25,18 @@ toc:
 --
 * *Summary:* Improved the `README.md` of an open-source Hugo theme (`hugo-profile`) to enhance clarity, structure, and usability for first-time users.
 * *Intended Audience:* Beginners building personal websites with Hugo.
-* *Written Context:* GitHub pull request contribution to the upstream project.
+* *Written Context:* A contribution inspired by building my own site with the project.
 --
 
-== Rewritten README
+== The Rewritten README
 
-*The rewritten README.md is available here: https://github.com/XintongWang4869/hugo-profile/tree/update-readme[Github Link🔗, window=_blank]*.
+*The rewritten README.md is available here: https://github.com/XintongWang4869/hugo-profile/tree/update-readme[Github Link🔗, window=_blank]. The contribution has been successfully merged into the main branch.*
 
-My contributions mainly include:
+My contribution mainly includes the following improvements:
 
 - Rewrote, reformated, and reorganized sections to improve the overall structure and clarity of the README.
 
-- Added step-by-step instructions in the Quick Start section to make it more beginner-friendly.
+- Added step-by-step instructions in the _Quick Start_ section to make the setup process more beginner-friendly.
 
 - Fixed a broken shortcode example (`x`) by replacing it with the correct `tweet` shortcode.
 
@@ -49,22 +45,24 @@ For full details, see the https://github.com/gurusabarish/hugo-profile/pull/233[
 
 == README Comparison
 
-The original README had a flat structure with minimal sectioning. In the improved version, the content is logically organized, with clearly separated sections for setup, content management, and deployment. This makes it easier for beginners to follow.
+The original README had a flat structure with minimal sectioning. 
 
-[cols=".^1,.^2,.^2", options="header"]
-|===
-| Aspect              | Before     | After (Improved)     
+In the improved README, the content is logically organized, with clearly separated sections for setup, content management, and deployment. This makes it easier for beginners to follow.
 
-| Requirements        | Brief mention of Hugo version only            | Expanded with version check command and install link   
-| Getting Started     | Basic setup steps without much explanation or trouble-shootings    | A step-by-step _Quick Start_ section from site creation to local preview                      
-| Content Management  | Only a few reference links      | New section on editing site content 
-| Deployment          | Basic Netlify usage                            | Clear options for Netlify (template vs manual setup) and static hosting             
+// [cols=".^1,.^2,.^2", options="header"]
+// |===
+// | Aspect              | Before     | After (Improved)     
+
+// | Requirements        | Brief mention of Hugo version only            | Expanded with version check command and install link   
+// | Getting Started     | Basic setup steps without much explanation or trouble-shootings    | A step-by-step _Quick Start_ section from site creation to local preview                      
+// | Content Management  | Only a few reference links      | New section on editing site content 
+// | Deployment          | Basic Netlify usage                            | Clear options for Netlify (template vs manual setup) and static hosting             
                   
-| Tone     | Technical and brief, assumes prior knowledge  | Beginner-focused, with explanatory details  
-|===
+// | Tone     | Technical and brief, assumes prior knowledge  | Beginner-focused, with explanatory details  
+// |===
 
 
-See below for screenshots of the original and improved README. The updated version is broken into sections for better usability:
+See below for screenshots of the original and improved READMEs:
 
 === Before
 
@@ -77,8 +75,8 @@ image::/images/portfolio/hugo-profile-readme-quick-start.png[Quick Start]
 image::/images/portfolio/hugo-profile-readme-content-management.png[Content Management]
 image::/images/portfolio/hugo-profile-readme-deployment.png[Deployment]
 
-== Shortcode Fix 
+// == Shortcode Fix 
 
-Fixed a non-functional shortcode in the example content to avoid build errors, and documented known issues of the new solution.
+// Fixed a non-functional shortcode in the example content to avoid build errors, and documented known issues of the new solution.
 
-image::/images/portfolio/hugo-profile-readme-shortcode.png[]
+// image::/images/portfolio/hugo-profile-readme-shortcode.png[]

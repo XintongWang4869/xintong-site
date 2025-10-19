@@ -178,14 +178,14 @@ params:
     title: "About Me"
     image: "/images/me.jpeg"
     content: |-
-      I am a technical writer with a passion for web development and a background in applied linguistics. I am especially interested in the intersection of technology and language. I am currently working at a semiconductor company.
+      Technical writer by title, curious coder at heart, and language enthusiast by background. I'm in love with clean structure and smart systems. Currently at a semiconductor company — give PHY five!
 
       I am passionate about continuous learning, highly adaptable to new concepts and tools. I'm proud to be a loyal Coursera explorer! See all my Coursera certificates _<a href="https://www.linkedin.com/in/xintong3248/details/certifications/" target="_blank" rel="noopener" style="text-decoration: none;">here</a>_.
     skills:
       enable: true
       title: "Here are a few technologies I've been working with recently:"
       items:
-        - "Documentation: Asciidoc (asciidoctor-pdf), Markdown (mkdocs), Hugo"
+        - "Documentation: Asciidoc (asciidoctor-pdf), Markdown (MkDocs), Hugo"
         - "Automation: Python, Bash, Makefile"
         - "Version control: Git, GitHub"
         - "Back-end tools: Django, Flask"
@@ -208,9 +208,7 @@ params:
           name: "Check out my Ethernet notes <i class='fa fa-external-link' aria-hidden='true'></i>"
           url: "https://xintongwang4869.github.io/ethernet-guide/"
         content: |
-          I primarily work on datasheets for chip products such as PHY transceivers or Ethernet switches.
-
-          These are key documents in the semiconductor industry designed for enterprise engineers to understand a product's specifications, features, and integration requirements.
+          Leveraging an AsciiDoc-based automation workflow, I craft datasheets and technical documentation for chip products such as PHY transceivers and Ethernet switches, helping engineers understand specifications, features, and integration requirements. 
 
       # - job: "Software Developer"
       #   company: "Amazon"
@@ -243,19 +241,17 @@ params:
         date: "Sep 2021 - Sep 2022"
         GPA: "Graduated with Distinction"
         content: |-
-          Highlights:
-            - **Volunteer at IoE Confucius Institute:** Assisted in training sessions for local teachers, supporting Mandarin instruction and cultural exchange.
+            - **Volunteer, IoE Confucius Institute:** supported teacher training and cultural exchange.
       - title: "Bachelor's in English Language and Literature"
         school:
           name: "Sichuan University, China"
           url: "https://www.bing.com/ck/a?!&&p=326fb6d4015ece5c330d0d2df4c1e101585d5d07f8be4b485779ea0f01c113b9JmltdHM9MTc0NDc2MTYwMA&ptn=3&ver=2&hsh=4&fclid=2388ba5d-e6bc-6710-3eb3-af44e7c366f2&psq=sichuan+university&u=a1aHR0cDovL2VuLnNjdS5lZHUuY24v&ntb=1"
         date: "Sep 2017 - Jun 2021"
-        GPA: "3.93 out of 4.0 (top 7%) | TOEFL 113 | TEM-8 Excellent"
+        GPA: "3.91 out of 4.0 (top 7%) | TOEFL 113 | TEM-8 Excellent"
         content: |-
-          Highlights:
-          - Multiple scholarships and awards for academic excellence
-          - _Team Leader_ for a research project on Chinese Dishes Translation (_excellent project_)
-          - **Head of Collaboration Department at Five-Colored Stone Volunteer Group:** Liaised between over 2,000 university volunteers and students from 24 local schools to coordinate one-to-one composition exchanges. 
+            - **Collaboration Lead, Five-Colored Stone Volunteer Group:** coordinated 2,000+ volunteers with 24 local schools.
+            - **Team Leader** for research project on Chinese dish translation (graded Excellent).
+            - Three consecutive scholarships, Outstanding Student recognition.
         # featuredLink:
         #   enable: true
         #   name: "My academic record"
@@ -332,7 +328,7 @@ params:
     title: "Documentation Portfolio"
     items:
       - title: 'Hugo Profile Docs Contribution'
-        content: 'Open source documentation contribution to the Hugo Profile project: improved README structure, clarity, and usability for new users.'
+        content: 'Open-source documentation contribution to the Hugo Profile project: improved README structure, clarity, and usability for new users.'
         image: /images/portfolio/hugo-profile.png
         featured:
           name: Read More

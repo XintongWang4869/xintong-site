@@ -2,8 +2,34 @@
 
 .education-content ul li,
 .education-content ol li {
-  margin-bottom: 1em;
-  /* Adjust value as needed */
+  margin-bottom: 0.9em;
+  line-height: 1.2em;
+  font-style: italic;
+
+}
+
+.card-title {
+  line-height: 1.5;
+  /* adjust (e.g. 1.4 - 1.8) to taste */
+}
+
+.recent-post-summary {
+  font-size: 1rem !important;
+  line-height: 1.55 !important;
+}
+.recent-post-summary h1,
+.recent-post-summary h2,
+.recent-post-summary h3,
+.recent-post-summary h4,
+.recent-post-summary h5,
+.recent-post-summary h6 {
+  font-size: 1rem !important;
+  
+}
+
+/* optional: tighten spacing for truncated paragraphs */
+.recent-post-summary p {
+  margin-bottom: 1rem !important;
 }
 
 /* ========== TOC styling ========== */

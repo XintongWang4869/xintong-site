@@ -10,12 +10,7 @@ author: "Xintong Wang"
 tags:
   - asciidoc
   - asciidoctor pdf
-  - markup language
-  - documentation
   - technical writing
-  - writing sample
-  - guide
-  - tutorial
 image: /images/paper.jpg
 description: ""
 toc:
@@ -27,9 +22,9 @@ toc:
 [sidebar]
 .About This Document
 --
-* *Summary:* This document provides an introduction to AsciiDoc, covering the fundamentals of writing AsciiDoc documents and converting them into PDF format.
-* *Intended Audience:* Beginners in mark-up languages, as well as users who are migrating from Markdown or other markup formats to AsciiDoc.
-* *Written Context:* This guide is self-initiated and based on my personal learning experience. It aims to offer a clear, practical reference for AsciiDoc documents.
+* *Summary:* An introduction to AsciiDoc, covering the fundamentals of writing AsciiDoc documents and converting them into PDF format.
+* *Intended Audience:* Beginners in mark-up languages, as well as users who are migrating from Markdown formats to AsciiDoc.
+* *Written Context:* A self-initiated practical guide based on personal experience.
 --
 
 
