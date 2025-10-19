@@ -2,8 +2,8 @@
 
 .education-content ul li,
 .education-content ol li {
-  margin-bottom: 0.9em;
-  line-height: 1.2em;
+  margin-bottom: 1em;
+  line-height: 1.3em;
   font-style: italic;
 
 }
@@ -39,7 +39,7 @@
 .toc ol,
 .toc li a {
   font-size: 0.9rem !important;
-  line-height: 1.7 !important;
+  line-height: 1.4 !important;
 
 }
 
@@ -51,7 +51,7 @@
 }
 
 .toc li {
-  margin-bottom: 0.5em !important;
+  margin-bottom: 0.4em !important;
   margin-left: 0 !important;
 
 }
