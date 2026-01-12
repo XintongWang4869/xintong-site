@@ -25,7 +25,7 @@ toc:
 --
 * *Summary:* Improved the `README.md` of an open-source Hugo theme (`hugo-profile`) to enhance clarity, structure, and usability for first-time users.
 * *Intended Audience:* Beginners building personal websites with Hugo.
-* *Written Context:* A contribution inspired by building my own site with the project.
+* *Written Context:* A contribution inspired by implementing `hugo-profile` to build my own site.
 --
 
 == The Rewritten README

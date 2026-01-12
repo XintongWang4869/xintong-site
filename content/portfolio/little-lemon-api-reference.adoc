@@ -1,0 +1,243 @@
+---
+title: "Little Lemon API Reference"
+date: 2026-01-13T03:43:28+08:00
+draft: false
+_build:
+  list: local
+  render: always
+github_link: ""
+author: "Xintong Wang"
+tags:
+  - api documentation
+  - django rest framework
+  - technical writing
+image: /images/portfolio/ethernet-switch.jpg
+description: "RESTful API documentation for the Little Lemon restaurant backend API, featuring Token-based authentication and CRUD operations."
+toc:
+---
+
+:toc: auto
+:toclevels: 4
+
+[sidebar]
+.About This Document
+--
+* *Summary:* A technical reference for the Little Lemon restaurant backend API, detailing Token-based authentication and RESTful resource management (Menu & Bookings).
+* *Intended Audience:* Developers and integrators seeking to interact with the backend services programmatically.
+* *Written Context:* A portfolio sample derived from a https://github.com/XintongWang4869/LittleLemon[Django REST Framework project, window=_blank].
+--
+
+
+:sectnums:
+:hardbreaks-option:
+
+== Overview
+
+The Little Lemon API provides backend services for menu management and table reservations. It is built using **Django REST Framework**.
+
+*Base URL:* `\https://api.littlelemon.com/restaurant`
+
+
+
+== Authentication
+
+The API uses *Token-based Authentication*.
+
+=== Obtain a Token
+To access protected endpoints (such as Bookings), you must first obtain an API Token by providing valid user credentials.
+
+*Endpoint:*
+`POST /api-token-auth/`
+
+*Request Body:*
+
+
+    {
+    "username": "admin",
+    "password": "password123"
+    }
+
+
+*Response (200 OK):*
+
+    {
+    "token": "9a8b7c6d5e4f3a2b1c..."
+    }
+
+
+=== Use the Token
+Include the token in the Authorization header of subsequent requests to protected endpoints.
+
+*Header Format:*
+
+
+    Authorization: Token 9a8b7c6d5e4f3a2b1c...
+
+
+== Resources
+
+=== Menu Items
+
+Manage the restaurant's food and beverage inventory.
+
+* *Public Access:* No authentication required for viewing.
+* *Write Access:* Standard create/update operations supported.
+
+==== List / Create Items
+Retrieve all items or create a new one.
+
+*Endpoint:*
+`GET /menu/`
+`POST /menu/`
+
+
+**_Note:_** To create a new menu item (POST), input `price` as a number (float/integer). The API returns `price` as a string to preserve decimal precision.
+
+
+*Request Body (POST):*
+
+----
+{
+  "title": "happy lemon",
+  "price": 5.00,
+  "inventory": 15
+}
+----
+
+
+*Response (201 Created):*
+
+----
+{
+  "id": 1,
+  "title": "happy lemon",
+  "price": "5.00",
+  "inventory": 15
+}
+----
+
+
+==== Single Item Operations
+Retrieve, update, or delete a specific menu item by its ID.
+
+*Endpoint:* 
+`GET /menu/{id}`
+`PUT /menu/{id}`
+`DELETE /menu/{id}`
+
+*Parameters:* 
+`id` (integer, required).
+
+
+
+=== Bookings
+
+Manage table reservations.
+
+*IMPORTANT:* This is a Protected Endpoint requiring a valid API Token in the header.
+
+
+==== API Root
+Provides navigation links to booking resources.
+
+*Endpoint:*
+`GET /booking/`
+
+
+*Response:*
+
+----
+{
+    "tables": "https://api.littlelemon.com/restaurant/booking/tables/"
+}
+----
+
+==== List / Create Bookings
+Retrieve all reservations or book a new table.
+
+*Endpoint:*
+`GET /booking/tables/`
+`POST /booking/tables/`
+
+**_Note:_** Use ISO 8601 Format for `booking_date` (YYYY-MM-DDThh:mm:ssZ).
+
+*Request Body (POST):*
+
+----
+{
+  "name": "Mr. Lemon",
+  "no_of_guests": 5,
+  "booking_date": "2026-02-14T19:00:00"
+}
+----
+
+*Response (201 Created):*
+
+----
+{
+  "id": 1,
+  "name": "Mr. Lemon",
+  "no_of_guests": 5,
+  "booking_date": "2026-02-14T19:00:00Z"
+}
+----
+
+==== Single Booking Operations
+Update or cancel a specific reservation.
+
+*Endpoint:*
+`GET /booking/tables/{id}/`
+`PUT /booking/tables/{id}/`
+`DELETE /booking/tables/{id}/`
+
+
+
+== Data Schema
+
+=== Menu Model
+
+[cols="1,1,3", options="header"]
+|===
+| Field | Type | Description
+
+| `id`
+| Integer
+| Primary Key (Auto-generated)
+
+| `title`
+| String
+| Name of the dish (Max 255 chars)
+
+| `price`
+| Decimal
+| **Input**: Number `5.00` +
+**Output**: String `"5.00"`
+
+| `inventory`
+| Integer
+| Quantity available
+|===
+
+=== Booking Model
+
+[cols="1,1,3", options="header"]
+|===
+| Field | Type | Description
+
+| `id`
+| Integer
+| Primary Key (Auto-generated)
+
+| `name`
+| String
+| Name of the guest
+
+| `no_of_guests`
+| Integer
+| Number of people
+
+| `booking_date`
+| DateTime
+| ISO 8601 Format (YYYY-MM-DDThh:mm:ss)
+|===
+

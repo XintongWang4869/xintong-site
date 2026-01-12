@@ -327,8 +327,17 @@ params:
     enable: true
     title: "Documentation Portfolio"
     items:
-      - title: 'Hugo Profile Docs Contribution'
-        content: 'Open-source documentation contribution to the Hugo Profile project: improved README structure, clarity, and usability for new users.'
+      - title: 'Little Lemon API Reference'
+        content: 'RESTful API documentation demonstrating token authentication and resource management.'
+        image: /images/portfolio/little-lemon.png
+        featured:
+          name: Read More
+          link: portfolio/little-lemon-api-reference/
+          new_window: false  
+        badges:
+          - "API Documentation"  
+      - title: 'Open Source Contribution (Hugo Profile)'
+        content: 'An improved README based on hands-on deployment experience, resolving friction points for new users.'
         image: /images/portfolio/hugo-profile.png
         featured:
           name: Read More
@@ -336,7 +345,7 @@ params:
           new_window: false
         badges:
           - "Open Source"
-          - "Hugo Profile Theme"       
+          - "README"       
       - title: Switch Functions in Automotive Ethernet Networks
         content: An accessible overview of Ethernet switch functions in automotive networks, covering frame forwarding, VLANs, QoS, TSN, multicast control, and security.
         image: /images/portfolio/ethernet-switch.jpg
@@ -346,7 +355,7 @@ params:
           new_window: false
         badges:
           - "Ethernet"  
-          - "AsciiDoc"
+          - "Technical Spec"
       - title: Getting Started with AsciiDoc
         content: A beginner-friendly guide to AsciiDoc fundamentals and PDF conversion, based on personal experience and practical insights.
         image: /images/paper.jpg
@@ -356,21 +365,22 @@ params:
           new_window: false
         badges:
           - "AsciiDoc"
-          - "Asciidoctor PDF"    
-      - title: Ethernet Study Notes
-        content: A personal knowledge base introducing Ethernet technology, covering standards, protocols, and applications.
-        image: /images/portfolio/ethernet-background.jpg
-        featured:
-          name: Demo
-          link: https://xintongwang4869.github.io/ethernet-guide/
-        badges:
-          - "Ethernet"
-          - "Hugo"
-          - "Docsy"
-          - "Markdown"
-        links:
-          - icon: fab fa-github
-            url: https://github.com/XintongWang4869/ethernet-guide
+          - "Asciidoctor PDF"  
+          - "Tutorial"  
+      # - title: Ethernet Study Notes
+      #   content: A personal knowledge base introducing Ethernet technology, covering standards, protocols, and applications.
+      #   image: /images/portfolio/ethernet-background.jpg
+      #   featured:
+      #     name: Demo
+      #     link: https://xintongwang4869.github.io/ethernet-guide/
+      #   badges:
+      #     - "Ethernet"
+      #     - "Hugo"
+      #     - "Docsy"
+      #     - "Markdown"
+      #   links:
+      #     - icon: fab fa-github
+      #       url: https://github.com/XintongWang4869/ethernet-guide
 
 
   #Contact

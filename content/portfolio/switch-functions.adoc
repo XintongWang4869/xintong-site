@@ -1,5 +1,5 @@
 ---
-title: "An Overview of Switch Functions in Automotive Ethernet Networks"
+title: "Ethernet Switch Functions in Automotive Networks"
 date: 2025-09-13T13:42:09+02:00
 draft: false
 _build:
