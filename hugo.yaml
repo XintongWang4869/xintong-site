@@ -336,8 +336,8 @@ params:
           new_window: false  
         badges:
           - "API Documentation"  
-      - title: 'Open Source Contribution (Hugo Profile)'
-        content: 'An improved README based on hands-on deployment experience, resolving friction points for new users.'
+      - title: 'Open Source Docs Contribution'
+        content: 'An improved README of Hugo Profile based on hands-on deployment experience, resolving friction points for new users.'
         image: /images/portfolio/hugo-profile.png
         featured:
           name: Read More
@@ -346,7 +346,7 @@ params:
         badges:
           - "Open Source"
           - "README"       
-      - title: Switch Functions in Automotive Ethernet Networks
+      - title: Ethernet Switch Functions in Automotive Networks
         content: An accessible overview of Ethernet switch functions in automotive networks, covering frame forwarding, VLANs, QoS, TSN, multicast control, and security.
         image: /images/portfolio/ethernet-switch.jpg
         featured:

@@ -128,11 +128,11 @@ h2 {
 }
 
 h3 {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
 }
 
 h4 {
-  font-size: 1rem;
+  font-size: 1.3rem;
 }
 
 /* Lists (ulist and olist) */
@@ -213,58 +213,6 @@ code {
 
 /* Admonitions (Notes, Tips, Warnings) */
 
-.admonitionblock {
-
-  border-left: 5px solid #2196F3;
-  padding: 1em 1.5em 0em 1.5em;
-  padding-block-end: 0.1em;
-  margin: 2em 2em 3.5em 3em;
-  border-radius: 4px;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.08);
-
-}
-
-
-.admonitionblock .title {
-  font-weight: bold;
-}
-
-.admonitionblock .content p {
-  font-size: 0.9rem;
-  font-style: italic;
-  line-height: 1.65;
-  /* margin-bottom: -1.5em; */
-  margin-right: -1.5em;
-
-}
-
-
-/* Colors by type */
-/* not working below */
-.admonitionblock.note {
-  /* border-color: #2196F3 !important; */
-  background: #eef6fd !important;
-}
-
-.admonitionblock.tip {
-  border-color: #4CAF50;
-  background: #e8f5e9;
-}
-
-.admonitionblock.warning {
-  border-color: #FF9800;
-  background: #fff3e0;
-}
-
-.admonitionblock.caution {
-  border-color: #f44336;
-  background: #ffebee;
-}
-
-.admonitionblock.important {
-  border-color: #9c27b0;
-  background: #f3e5f5;
-}
 
 /* Code Blocks */
 .listingblock pre,
@@ -347,4 +295,145 @@ hr {
   font-size: 0.9rem;
   margin-bottom: 1em;
   color: #555;
+}
+
+/* Tighten table cell vertical spacing while keeping comfortable line-height
+   - Reduce top/bottom padding to decrease distance from cell boundary
+   - Slightly increase line-height for readability
+   - Set a slightly smaller, consistent font-size for all content inside tables */
+#single .page-content table,
+#single .page-content table > thead > tr > th,
+#single .page-content table > tbody > tr > td,
+table,
+table th,
+table td {
+  margin: 0 !important;
+  padding: 0.18rem 0.5rem !important; /* top/bottom left/right — tighter vertical space */
+  line-height: 1.45 !important; 
+  font-size: 0.88rem !important; /* consistent, slightly smaller table font */
+  vertical-align: middle !important;
+}
+
+/* Remove extra padding from AsciiDoc table content wrappers so cell padding controls spacing */
+#single .page-content table td .content,
+table td .content {
+  padding: 0.2rem !important;
+}
+
+/* Reduce paragraph margins inside table cells (common cause of extra bottom space) */
+#single .page-content table td p,
+table td p,
+#single .page-content table th p,
+table th p {
+  margin: 0 0 0 0 !important;
+}
+
+/* If the theme sets larger min-height on rows, force normal height */
+#single .page-content table > tbody > tr,
+table > tbody > tr {
+  min-height: 0 !important;
+}
+
+/* Tighten spacing for lists inside table cells */
+/* Tighten spacing for lists inside table cells and ensure consistent font-size/line-height */
+#single .page-content table td ul,
+#single .page-content table td ol,
+table td ul,
+table td ol,
+.table td ul,
+.table td ol,
+.tableblock td ul,
+.tableblock td ol {
+  margin: 0.15rem 0 0.15rem 0 !important; /* small top/bottom gap */
+  padding-left: 1.05rem !important; /* small indent for list items */
+  font-size: 0.88rem !important;
+  line-height: 1.45 !important;
+}
+
+#single .page-content table td li,
+table td li,
+.table td li,
+.tableblock td li {
+  margin: 0 0 0.12rem 0 !important; /* small gap between list items */
+  padding: 0 !important;
+  line-height: inherit !important; /* inherit the slightly larger line-height */
+  font-size: inherit !important;
+}
+
+/* Ensure paragraphs inside list items in table cells do not add extra spacing */
+#single .page-content table td li p,
+table td li p,
+.table td li p {
+  margin: 0 !important;
+  padding: 0 !important;
+  font-size: inherit !important;
+  line-height: inherit !important;
+}
+
+/* code blocks and inline code inside table cells */
+table td pre,
+table th pre,
+#single .page-content table td pre,
+#single .page-content table th pre {
+  padding: 0.25rem 0.4rem !important; /* smaller padding for in-table code blocks */
+  margin: 0 !important;
+  font-size: 0.78rem !important;
+  line-height: 1.55 !important;
+  white-space: pre-wrap !important;
+}
+
+table td code,
+table th code,
+#single .page-content table td code,
+#single .page-content table th code {
+  font-size: 0.78rem !important;
+  line-height: 1.55 !important;
+}
+
+/* Ensure all text inside tables (including lists, code, paragraphs) uses the same, slightly smaller font */
+#single .page-content table,
+#single .page-content table *,
+table,
+table * {
+  font-size: 0.88rem !important;
+  line-height: 1.45 !important;
+}
+
+/* Admonition 'Note' styling: rounded, shadow, bold-italic title, italic body */
+
+.admonitionblock .title {
+  font-weight: 700 !important;
+  font-style: italic !important;
+}
+
+.admonitionblock .content p {
+  font-style: italic !important;
+  margin: 0 !important;
+}
+
+.admonitionblock.note {
+
+  border-left: 5px solid #2196F3 !important;
+  border-radius: 8px !important;
+}
+
+
+.admonitionblock.tip {
+  border-left: 5px solid #4CAF50 !important;
+  border-radius: 8px !important;
+}
+
+.admonitionblock.warning {
+  border-left: 5px solid #FF9800 !important;
+  border-radius: 8px !important;
+}
+
+.admonitionblock.caution {
+  border-left: 5px solid #f44336 !important;
+  border-radius: 8px !important;
+}
+
+.admonitionblock.important {
+  border-left: 5px solid #9c27b0 !important;
+  border-radius: 8px !important;
 }
