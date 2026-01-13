@@ -271,10 +271,10 @@ code {
 .literalblock pre {
   background: #272822;
   color: #f8f8f2;
-  padding: 1em;
+  padding: 0.4em !important;
   border-radius: 5px;
   overflow-x: auto;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   /* smaller font */
   line-height: 1.4;
 }
@@ -287,7 +287,7 @@ code {
   padding: 0.2em 0.4em;
   border-radius: 3px;
   font-family: monospace;
-  font-size: 0.9em;
+  font-size: 0.8em;
 }
 
 /* Blockquotes */

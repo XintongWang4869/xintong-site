@@ -6,5 +6,6 @@ RUBY_VERSION = "3.3.4"
 
 
 [build]
+command = "gem install --no-document asciidoctor && hugo --gc --minify"
 publish = "public"
-command = "hugo --gc --minify"
+

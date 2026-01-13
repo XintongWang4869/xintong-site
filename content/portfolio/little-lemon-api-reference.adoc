@@ -11,7 +11,7 @@ tags:
   - api documentation
   - django rest framework
   - technical writing
-image: /images/portfolio/ethernet-switch.jpg
+image: /images/portfolio/little-lemon.png
 description: "RESTful API documentation for the Little Lemon restaurant backend API, featuring Token-based authentication and CRUD operations."
 toc:
 ---
